@@ -2,7 +2,7 @@ import React from 'react';
 export default function Home() {
   return (
     <div
-      className="min-h-screen bg-cover bg-center relative text-white"
+      className="min-h-screen bg-cover bg-center relative text-white flex flex-col"
       style={{
         backgroundImage:
           "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/dash-background.jpeg')",
@@ -10,11 +10,13 @@ export default function Home() {
     >
       {/* Header */}
       <header className="flex justify-between items-center p-6">
-        <div className="flex items-center space-x-2">
-          <img src="/blood-afya-icon.png" alt="BloodAfya Logo" className="w-10 h-10" />
-          <h1 className="text-2xl font-bold">BloodAfya</h1>
+        <div className="flex flex-col items-start">
+          <div className="flex items-center space-x-2">
+            <img src="/blood-afya-icon.png" alt="BloodAfya Logo" className="w-10 h-10" />
+            <h1 className="text-2xl font-bold">BloodAfya</h1>
+          </div>
+          <p className="italic text-sm">Donate Blood, Save Lives.</p>
         </div>
-        <p className="italic text-sm">Donate Blood, Save Lives.</p>
       </header>
 
       {/* Navigation */}
@@ -35,7 +37,7 @@ export default function Home() {
       </nav>
 
       {/* Main Content */}
-      <main className="flex items-center justify-start px-10 py-20 max-w-4xl">
+      <main className="flex items-center justify-start px-10 py-20 max-w-4xl flex-grow">
         <div className="space-y-6">
           <h2 className="text-4xl font-bold leading-snug">
             Connecting Life. <br /> One Drop at a Time.
