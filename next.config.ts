@@ -1,9 +1,5 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  devIndicators: {
-    buildActivity: false, // This disables the "N" icon and animation
-  },/* config options here */
-};
+const nextConfig: NextConfig = { devIndicators: false };
 
 export default nextConfig;
