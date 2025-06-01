@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaTwitter, FaInstagram, FaGlobe, FaEnvelope } from 'react-icons/fa';
 export default function Home() {
   return (
     <div
@@ -8,8 +9,9 @@ export default function Home() {
           "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/dash-background.jpeg')",
       }}
     >
+      <div className="flex w-full">
       {/* Header */}
-      <header className="flex justify-between items-center p-6 bg-black bg-opacity-40 px-6 py-4">
+      <header className="flex-1 flex justify-between items-center p-6 bg-black bg-opacity-40 px-6 py-4">
         <div className="flex flex-col items-start">
           <div className="flex items-center space-x-2">
             <img src="/blood-afya-icon.png" alt="BloodAfya Logo" className="w-10 h-10" />
@@ -20,7 +22,7 @@ export default function Home() {
       </header>
 
       {/* Navigation */}
-      <nav className="flex justify-between items-center bg-black bg-opacity-40 px-6 py-4">
+      <nav className="flex-1 flex justify-between items-center bg-black bg-opacity-40 px-6 py-4">
         <div className="flex items-center space-x-6">
           <a href="#" className="hover:text-red-600 transition">Home</a>
           <input
@@ -35,6 +37,7 @@ export default function Home() {
           <button className="px-4 py-2 bg-gray-700 rounded-md hover:bg-red-700 transition">Signup</button>
         </div>
       </nav>
+      </div>
 
       {/* Main Content */}
       <main className="flex items-center justify-start px-10 py-20 max-w-4xl flex-grow">
@@ -57,9 +60,26 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-black bg-opacity-60 text-gray-300 text-center py-6 mt-auto">
-        <p className="text-sm mt-2">&copy; {new Date().getFullYear()} BloodAfya. All rights reserved.</p>
-      </footer>
+    <footer className="bg-black bg-opacity-60 text-gray-300 text-center py-4 mt-auto">
+      <div className="flex justify-center items-center space-x-4 text-sm">
+        {/* Social Icons */}
+        <a href="mailto:madarakalincoln46@gmail.com" className="hover:text-red-500">
+          <FaEnvelope />
+        </a>
+        <a href="https://twitter.com/syntaxrtx" target="_blank" rel="noopener noreferrer" className="hover:text-red-500">
+          <FaTwitter />
+        </a>
+        <a href="https://instagram.com/kcl_fy" target="_blank" rel="noopener noreferrer" className="hover:text-red-500">
+          <FaInstagram />
+        </a>
+        <a href="https://lincoln-madaraka-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-red-500">
+          <FaGlobe />
+        </a>
+        <span className="text-gray-400 text-lg">•</span>
+        {/* Text */}
+        <p className="ml-4">&copy; {new Date().getFullYear()} BloodAfya. All rights reserved.</p>
+      </div>
+    </footer>
     </div>
     
   );
