@@ -59,5 +59,6 @@ export default function Home() {
         <p className="text-sm mt-2">&copy; {new Date().getFullYear()} BloodAfya. All rights reserved.</p>
       </footer>
     </div>
+    
   );
 }
