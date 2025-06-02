@@ -32,9 +32,12 @@ export default function Register() {
     >
       {/* Header */}
       <header className="flex justify-between items-center p-6 bg-black bg-opacity-50">
-        <div className="flex items-center space-x-2">
-          <img src="/blood-afya-icon.png" alt="BloodAfya Logo" className="w-10 h-10" />
-          <h1 className="text-2xl font-bold">BloodAfya</h1>
+        <div className="flex flex-col items-start">
+          <div className="flex items-center space-x-2">
+            <img src="/blood-afya-icon.png" alt="BloodAfya Logo" className="w-10 h-10" />
+            <h1 className="text-2xl font-bold">BloodAfya</h1>
+          </div>
+          <p className="text-sm italic text-white mt-1 ml-1">Donate Blood, Save Lives</p>
         </div>
         <button onClick={() => router.back()} className="text-gray-300 hover:text-red-600">
           <FaArrowLeft className="inline mr-2" /> Back
@@ -44,7 +47,15 @@ export default function Register() {
       {/* Signup Form */}
       <main className="flex justify-center items-center flex-grow px-4">
         <div className="bg-black bg-opacity-60 p-8 rounded-xl max-w-2xl w-full space-y-6 shadow-lg">
-          <h2 className="text-3xl font-bold mb-2 text-red-500">Create Your Account</h2>
+          <button
+              onClick={() => router.back()}
+              className="text-gray-300 hover:text-red-500 mb-4 flex items-center space-x-2"
+            >
+              <FaArrowLeft />
+              <span>Back</span>
+            </button>
+
+          <h2 className="text-3xl font-bold mb-2 text-red-500 text-center">Create Your Account</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input type="text" placeholder="Full Name" className="p-3 rounded bg-gray-100 text-black" />
