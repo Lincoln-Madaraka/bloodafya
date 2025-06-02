@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import React from 'react';
-import { FaTwitter, FaInstagram, FaGlobe, FaEnvelope } from 'react-icons/fa';
+import { FaTwitter, FaInstagram, FaGlobe, FaEnvelope, FaSearch } from 'react-icons/fa';
 export default function Home() {
   const router = useRouter();
   return (
@@ -28,13 +28,26 @@ export default function Home() {
       {/* Navigation */}
       <nav className="flex-1 flex justify-between items-center bg-black bg-opacity-40 px-6 py-4">
         <div className="flex items-center space-x-6">
-          <a href="/" className="hover:text-red-600 transition">Home</a>
-          <input
-            type="text"
-            placeholder="Search..."
-            className="rounded-md px-4 py-1 text-black placeholder-gray-500 focus:outline-none focus:ring focus:border-red-400"
-          />
-          <a href="/contact" className="hover:text-red-600 transition">Contact</a>
+          <a href="/" className="hover:text-red-600 text-xl font-bold transition">Home</a>
+          <div className="flex items-center space-x-4"> 
+           
+              <div className="flex items-center max-w-md mx-auto bg-white rounded-full shadow-md px-4 py-2">
+                <FaSearch className="text-gray-500" />
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  className="flex-grow bg-transparent focus:outline-none text-black placeholder-gray-400"
+                />
+                 <button
+                      type="submit"
+                      className="bg-red-600 text-white px-4 py-1 rounded-full hover:bg-red-700 transition ml-2"
+                    >
+                      Go
+                    </button>
+               </div>
+            </div>
+
+          <a href="/contact" className="hover:text-red-600 text-xl font-bold transition">Contact</a>
         </div>
         <div className="flex space-x-4">
           <button onClick={() => router.push('/login')} className="px-4 py-2 bg-gray-700 rounded-md hover:bg-red-700 transition">Login</button>
