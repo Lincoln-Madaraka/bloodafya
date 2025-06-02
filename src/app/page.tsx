@@ -28,13 +28,13 @@ export default function Home() {
       {/* Navigation */}
       <nav className="flex-1 flex justify-between items-center bg-black bg-opacity-40 px-6 py-4">
         <div className="flex items-center space-x-6">
-          <a href="#" className="hover:text-red-600 transition">Home</a>
+          <a href="/" className="hover:text-red-600 transition">Home</a>
           <input
             type="text"
             placeholder="Search..."
             className="rounded-md px-4 py-1 text-black placeholder-gray-500 focus:outline-none focus:ring focus:border-red-400"
           />
-          <a href="#" className="hover:text-red-600 transition">Contact</a>
+          <a href="/contact" className="hover:text-red-600 transition">Contact</a>
         </div>
         <div className="flex space-x-4">
           <button onClick={() => router.push('/login')} className="px-4 py-2 bg-gray-700 rounded-md hover:bg-red-700 transition">Login</button>
