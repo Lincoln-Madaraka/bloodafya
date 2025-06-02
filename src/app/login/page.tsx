@@ -17,10 +17,10 @@ export default function Login() {
     >
       {/* Header */}
       <header className="p-6 bg-black bg-opacity-50 flex flex-col items-center justify-center">
-        <div className="flex items-center space-x-2">
+        <a href='/'><div className="flex items-center space-x-2">
           <img src="/blood-afya-icon.png" alt="BloodAfya Logo" className="w-12 h-12" />
           <h1 className="text-3xl font-bold">BloodAfya</h1>
-        </div>
+        </div></a>
         <p className="italic text-sm mt-1">Donate Blood, Save Lives.</p>
       </header>
 

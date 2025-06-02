@@ -32,13 +32,13 @@ export default function Register() {
     >
       {/* Header */}
       <header className="flex justify-between items-center p-6 bg-black bg-opacity-50">
-        <div className="flex flex-col items-start">
+        <a href='/'><div className="flex flex-col items-start">
           <div className="flex items-center space-x-2">
             <img src="/blood-afya-icon.png" alt="BloodAfya Logo" className="w-10 h-10" />
             <h1 className="text-2xl font-bold">BloodAfya</h1>
           </div>
           <p className="text-sm italic text-white mt-1 ml-1">Donate Blood, Save Lives</p>
-        </div>
+        </div></a>
       </header>
 
       {/* Signup Form */}

@@ -26,11 +26,11 @@ export default function ContactPage() {
     
 
       {/* Header */}
-      <div className="flex flex-col items-center text-center mt-4">
+      <a href='/'><div className="flex flex-col items-center text-center mt-4">
         <img src="/blood-afya-icon.png" alt="BloodAfya Logo" className="w-14 h-14" />
         <h1 className="text-3xl font-bold mt-2">BloodAfya</h1>
         <p className="italic text-sm">Donate Blood, Save Lives.</p>
-      </div>
+      </div></a>  
 
       {/* Contact Form */}
       <div className="flex-grow flex justify-center items-center px-6 py-10">

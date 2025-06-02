@@ -16,13 +16,13 @@ export default function Home() {
       <div className="flex w-full">
       {/* Header */}
       <header className="flex-1 flex justify-between items-center p-6 bg-black bg-opacity-40 px-6 py-4">
-        <div className="flex flex-col items-start">
+        <a href='/'><div className="flex flex-col items-start">
           <div className="flex items-center space-x-2">
             <img src="/blood-afya-icon.png" alt="BloodAfya Logo" className="w-10 h-10" />
             <h1 className="text-2xl font-bold">BloodAfya</h1>
           </div>
           <p className="italic text-sm">Donate Blood, Save Lives.</p>
-        </div>
+        </div></a>
       </header>
 
       {/* Navigation */}
