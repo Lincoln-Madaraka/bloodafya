@@ -23,6 +23,7 @@ export default function ContactPage() {
         backgroundPosition: 'center',
       }}
     >
+    
 
       {/* Header */}
       <div className="flex flex-col items-center text-center mt-4">
