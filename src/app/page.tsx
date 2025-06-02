@@ -38,7 +38,7 @@ export default function Home() {
         </div>
         <div className="flex space-x-4">
           <button onClick={() => router.push('/login')} className="px-4 py-2 bg-gray-700 rounded-md hover:bg-red-700 transition">Login</button>
-          <button  onClick={() => router.push('/signup')} className="px-4 py-2 bg-gray-700 rounded-md hover:bg-red-700 transition">Signup</button>
+          <button  onClick={() => router.push('/register')} className="px-4 py-2 bg-gray-700 rounded-md hover:bg-red-700 transition">Signup</button>
         </div>
       </nav>
       </div>
