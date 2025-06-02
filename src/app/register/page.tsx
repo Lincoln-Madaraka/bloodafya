@@ -39,9 +39,6 @@ export default function Register() {
           </div>
           <p className="text-sm italic text-white mt-1 ml-1">Donate Blood, Save Lives</p>
         </div>
-        <button onClick={() => router.back()} className="text-gray-300 hover:text-red-600">
-          <FaArrowLeft className="inline mr-2" /> Back
-        </button>
       </header>
 
       {/* Signup Form */}
