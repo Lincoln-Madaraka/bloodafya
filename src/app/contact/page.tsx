@@ -23,15 +23,6 @@ export default function ContactPage() {
         backgroundPosition: 'center',
       }}
     >
-      {/* Back Arrow */}
-      <div className="p-4">
-        <button
-          onClick={() => router.back()}
-          className="text-white hover:text-red-500 transition"
-        >
-          <FaArrowLeft size={24} />
-        </button>
-      </div>
 
       {/* Header */}
       <div className="flex flex-col items-center text-center mt-4">
@@ -43,6 +34,12 @@ export default function ContactPage() {
       {/* Contact Form */}
       <div className="flex-grow flex justify-center items-center px-6 py-10">
         <form className="w-full max-w-2xl bg-black bg-opacity-60 rounded-xl p-8 space-y-6">
+          {/* Back Button inside form */}
+          <div className="flex items-center space-x-2 text-white hover:text-red-500 cursor-pointer w-fit" onClick={() => router.back()}>
+            <FaArrowLeft size={20} />
+            <span className="text-sm font-semibold">Back</span>
+          </div>
+
           <h2 className="text-2xl font-bold mb-4 text-center">Contact Us</h2>
           <br></br>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
