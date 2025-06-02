@@ -1,6 +1,10 @@
+'use client';
+
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { FaTwitter, FaInstagram, FaGlobe, FaEnvelope } from 'react-icons/fa';
 export default function Home() {
+  const router = useRouter();
   return (
     <div
       className="min-h-screen bg-cover bg-center relative text-white flex flex-col"
@@ -33,8 +37,8 @@ export default function Home() {
           <a href="#" className="hover:text-red-600 transition">Contact</a>
         </div>
         <div className="flex space-x-4">
-          <button className="px-4 py-2 bg-gray-700 rounded-md hover:bg-red-700 transition">Login</button>
-          <button className="px-4 py-2 bg-gray-700 rounded-md hover:bg-red-700 transition">Signup</button>
+          <button onClick={() => router.push('/login')} className="px-4 py-2 bg-gray-700 rounded-md hover:bg-red-700 transition">Login</button>
+          <button  onClick={() => router.push('/signup')} className="px-4 py-2 bg-gray-700 rounded-md hover:bg-red-700 transition">Signup</button>
         </div>
       </nav>
       </div>

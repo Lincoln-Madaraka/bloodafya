@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "BloodAfya",
   description: "Platform to connect blood donors and hospitals.",
-};
+  };
 
 export default function RootLayout({
   children,
