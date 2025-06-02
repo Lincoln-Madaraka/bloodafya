@@ -50,8 +50,8 @@ export default function Home() {
           <a href="/contact" className="hover:text-red-600 text-xl font-bold transition">Contact</a>
         </div>
         <div className="flex space-x-4">
-          <button onClick={() => router.push('/login')} className="px-4 py-2 bg-gray-700 rounded-md hover:bg-red-700 transition">Login</button>
-          <button  onClick={() => router.push('/register')} className="px-4 py-2 bg-gray-700 rounded-md hover:bg-red-700 transition">Signup</button>
+          <button onClick={() => router.push('/login')} className="px-4 py-2 bg-gray-700 text-lg rounded-md hover:bg-red-700 transition">Login</button>
+          <button  onClick={() => router.push('/register')} className="px-4 py-2 bg-gray-700 text-lg rounded-md hover:bg-red-700 transition">Signup</button>
         </div>
       </nav>
       </div>
@@ -70,7 +70,7 @@ export default function Home() {
           <p className="text-lg text-gray-200">
             Join a growing network of heroes who are changing lives—one donation at a time.
           </p>
-          <button className="bg-red-700 hover:bg-red-800 transition px-6 py-2 rounded-xl shadow-lg">
+          <button onClick={() => router.push('/register')} className="bg-red-700 hover:bg-red-800 transition px-6 py-2 rounded-xl shadow-lg">
             Get Started
           </button>
         </div>
