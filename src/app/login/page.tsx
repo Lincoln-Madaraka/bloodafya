@@ -1,11 +1,12 @@
 'use client';
 
-import React from 'react';
-import { FaArrowLeft, FaTwitter, FaInstagram, FaGlobe, FaEnvelope } from 'react-icons/fa';
+import React, { useState } from "react";
+import { FaArrowLeft, FaTwitter, FaInstagram, FaGlobe, FaEnvelope, FaEye, FaEyeSlash} from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
 
 export default function Login() {
   const router = useRouter();
+  const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div
@@ -44,18 +45,27 @@ export default function Login() {
               <input
                 type="email"
                 id="email"
-                className="w-full px-4 py-2 rounded-md text-black placeholder-gray-500 focus:outline-none focus:ring focus:border-red-500"
+                className="w-full px-4 py-2 rounded-md  text-white placeholder-gray-500 focus:outline-none focus:ring focus:border-red-500"
                 placeholder="you@example.com"
               />
             </div>
             <div>
               <label htmlFor="password" className="block mb-1 text-sm text-gray-300">Password</label>
-              <input
-                type="password"
-                id="password"
-                className="w-full px-4 py-2 rounded-md text-black placeholder-gray-500 focus:outline-none focus:ring focus:border-red-500"
-                placeholder="********"
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  className="w-full px-4 py-2 rounded-md text-white placeholder-gray-500 focus:outline-none focus:ring focus:border-red-500"
+                  placeholder="Enter Password"
+                />
+                <button
+                  type="button"
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-300"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
             </div>
             <button
               type="submit"
@@ -73,7 +83,7 @@ export default function Login() {
 
           <div className="text-sm text-center mt-6 text-gray-300">
             I have no account yet?{' '}
-            <a href="/signup" className="text-red-500 hover:underline">
+            <a href="/register" className="text-red-500 hover:underline">
               Sign Up
             </a>
           </div>
