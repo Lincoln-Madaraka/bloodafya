@@ -33,7 +33,7 @@ export default function DonorProfile() {
         </a>
         <nav className="flex space-x-4 text-sm">
           <button onClick={() => router.push('/dashboard')}>Dashboard</button>
-          <button onClick={() => router.push('profile/donor')}>My Profile</button>
+          <button onClick={() => router.push('/profile/donor')}>My Profile</button>
          <div className="relative group">
          <button
             onClick={() => setIsOpen(!isOpen)}
