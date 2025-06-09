@@ -32,6 +32,19 @@ export default function DonorProfile() {
         <nav className="flex space-x-4 text-sm">
           <button onClick={() => router.push('/dashboard')}>Dashboard</button>
           <button onClick={() => router.push('/donor')}>My Profile</button>
+          <div className="relative group">
+            <button className="bg-red-700 text-white px-4 py-2 rounded-xl shadow hover:bg-red-800 transition">
+                Profile Mode: Donor ⌄
+            </button>
+            <div className="absolute mt-2 hidden group-hover:flex flex-col bg-white text-black rounded-md shadow-lg duration-200 w-48 z-10">
+                <button
+                onClick={() => router.push('/profile/recipient')}
+                className="w-full text-left px-4 py-2 hover:bg-red-100"
+                >
+                Switch to Recipient
+                </button>
+            </div>
+          </div>
           <button onClick={() => router.push('/history')}>History</button>
           <button onClick={() => router.push('/drives')}>Upcoming Drives</button>
           <button onClick={() => router.push('/settings')}>Settings</button>
