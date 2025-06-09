@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
 import {
   FaArrowLeft, FaTwitter, FaInstagram, FaGlobe, FaEnvelope,
-  FaEye, FaEyeSlash
+  FaEye, FaEyeSlash, FaPen
 } from 'react-icons/fa';
 
 export default function DonorProfile() {
@@ -17,7 +17,7 @@ export default function DonorProfile() {
       className="min-h-screen bg-cover bg-center relative text-white flex flex-col"
       style={{
         backgroundImage:
-          "linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('/login.jpeg')",
+          "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('/login.jpeg')",
       }}
     >
       {/* Header */}
@@ -48,9 +48,13 @@ export default function DonorProfile() {
         </div>
 
         {/* Section 1: Basic Info */}
-        <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
+        <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
+          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
+            <FaPen />
+          </div>
           <h2 className="text-xl font-semibold mb-4">Basic Information</h2>
           <div className="flex flex-col md:flex-row items-start md:items-center space-x-6">
+
             {/* Avatar is more interactive than a static photo */}
             <img
               src="/avatar-placeholder.png"
@@ -80,7 +84,10 @@ export default function DonorProfile() {
         </section>
 
         {/* Section 2: Health & Eligibility Info */}
-        <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
+        <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
+          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
+            <FaPen />
+          </div>
           <h2 className="text-xl font-semibold mb-4">Health & Eligibility</h2>
           <p><strong>Last Donation Date:</strong> April 1, 2025</p>
           <p><strong>Next Eligible Date:</strong> July 1, 2025</p>
@@ -89,7 +96,10 @@ export default function DonorProfile() {
         </section>
 
         {/* Section 3: Donation Activity */}
-        <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
+        <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
+          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
+            <FaPen />
+          </div>
           <h2 className="text-xl font-semibold mb-4">Donation Activity</h2>
           <p><strong>Total Donations:</strong> 5</p>
           <p><strong>Successful Donations:</strong> 4</p>
@@ -100,7 +110,10 @@ export default function DonorProfile() {
         </section>
 
         {/* Section 4: Engagement */}
-        <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
+        <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
+          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
+            <FaPen />
+          </div>
           <h2 className="text-xl font-semibold mb-4">Engagement</h2>
           <p><strong>Recipient Requests:</strong> 2 Pending, 1 Accepted</p>
           <p><strong>Connection Requests:</strong> Available</p>
@@ -109,7 +122,10 @@ export default function DonorProfile() {
         </section>
 
         {/* Section 5: Medical Clearance */}
-        <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
+        <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
+          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
+            <FaPen />
+          </div>
           <h2 className="text-xl font-semibold mb-4">Medical Clearance</h2>
           <p><strong>Clinic Notes:</strong> Verified – KEMRI</p>
           <p><strong>COVID Vaccine Status:</strong> Fully vaccinated</p>
@@ -117,7 +133,10 @@ export default function DonorProfile() {
         </section>
 
         {/* Section 6: Privacy Controls */}
-        <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
+        <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
+          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
+            <FaPen />
+          </div>
           <h2 className="text-xl font-semibold mb-4">Privacy Controls</h2>
           <p><strong>Phone/Email Visibility:</strong> {showPhone ? 'Shown' : 'Hidden'} / {showEmail ? 'Shown' : 'Hidden'}</p>
           <p><strong>Profile Discoverability:</strong> Enabled</p>
@@ -125,7 +144,10 @@ export default function DonorProfile() {
         </section>
 
         {/* Section 7: Dashboard Highlights */}
-        <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
+        <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
+          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
+            <FaPen />
+          </div>
           <h2 className="text-xl font-semibold mb-4">Dashboard Highlights</h2>
           <p><strong>Upcoming Drives:</strong> Red Cross Kisumu - June 15</p>
           <p><strong>Eligible in:</strong> 22 days</p>
@@ -133,7 +155,7 @@ export default function DonorProfile() {
           <p><strong>Impact Tracker:</strong> Saved 9 lives in 2025</p>
           <p><strong>Leaderboard:</strong> Top 10 Donors in Kisumu</p>
           <p><strong>Tips:</strong> Stay hydrated, eat iron-rich foods</p>
-        </section>
+      </section>
       </main>
 
       {/* Footer */}
