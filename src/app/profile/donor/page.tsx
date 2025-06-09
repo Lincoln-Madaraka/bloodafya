@@ -19,6 +19,21 @@ export default function DonorProfile() {
   const [email, setEmail] = useState("johndoe@example.com");
   const [location, setLocation] = useState("Kisumu, Kenya");
   const [avatar, setAvatar] = useState("/avatar-placeholder.png");
+  const handleSave = async () => {
+  // For now, just log the updated data — we’ll wire to DB/API next
+  console.log("Saving data:", {
+    name,
+    bloodType,
+    age,
+    gender,
+    phone,
+    email,
+    location,
+    avatar,
+  });
+
+  setEditMode(false); // Exit edit mode
+};
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
   const file = e.target.files?.[0];
   if (file) {
@@ -103,7 +118,7 @@ export default function DonorProfile() {
               <img
                 src={avatar}
                 alt="Donor Avatar"
-                className="w-24 h-24 rounded-full border-2 border-red-500 cursor-pointer"
+                className="w-24 h-24 rounded-full border-2 border-white-500 cursor-pointer"
               />
             </label>
             {editMode && (
