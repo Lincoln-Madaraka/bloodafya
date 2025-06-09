@@ -42,7 +42,7 @@ export default function DonorProfile() {
             Profile Mode: Donor ⌄
           </button>
           <div
-              className={`absolute mt-2 bg-white text-black rounded-md shadow-lg duration-200 w-48 z-10 ${
+              className={`absolute mt-2 bg-white text-black  rounded-md shadow-lg duration-200 w-48 z-10 ${
                 isOpen ? "flex flex-col" : "hidden"
               }`}
             >
