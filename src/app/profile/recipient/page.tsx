@@ -101,7 +101,6 @@ export default function RecipientProfile() {
           {/* ...fields here... */}
         </section>
       </main>
-
       {/* Footer */}
       <footer className="bg-black bg-opacity-60 text-gray-300 text-center py-4 mt-auto">
         <div className="flex justify-center items-center space-x-4 text-sm">
