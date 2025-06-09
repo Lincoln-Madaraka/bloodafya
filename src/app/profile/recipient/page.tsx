@@ -53,6 +53,34 @@ export default function RecipientProfile() {
             <FaPen />
           </div>
           <h2 className="text-xl font-bold mb-4">Basic Information</h2>
+          <div className="flex flex-col md:flex-row items-start md:items-center space-x-6">
+          
+                      {/* Avatar is more interactive than a static photo */}
+                      <img
+                        src="/avatar-placeholder.png"
+                        alt="Donor Avatar"
+                        className="w-24 h-24 rounded-full border-2 border-red-500"
+                      />
+                      <div className="space-y-2 mt-4 md:mt-0">
+                        <p><strong>Name:</strong> John Doe</p>
+                        <p><strong>Blood Type:</strong> O+</p>
+                        <p><strong>Age:</strong> 28</p>
+                        <p><strong>Gender:</strong> Male</p>
+                        <p>
+                          <strong>Phone:</strong> {showPhone ? '0712 345 678' : 'Hidden'}{' '}
+                          <button onClick={() => setShowPhone(!showPhone)} className="text-sm ml-2">
+                            {showPhone ? <FaEyeSlash /> : <FaEye />}
+                          </button>
+                        </p>
+                        <p>
+                          <strong>Email:</strong> {showEmail ? 'johndoe@example.com' : 'Hidden'}{' '}
+                          <button onClick={() => setShowEmail(!showEmail)} className="text-sm ml-2">
+                            {showEmail ? <FaEyeSlash /> : <FaEye />}
+                          </button>
+                        </p>
+                        <p><strong>Location:</strong> Kisumu, Kenya</p>
+                      </div>
+                    </div>
           {/* ...fields here... */}
         </section>
 
@@ -62,6 +90,7 @@ export default function RecipientProfile() {
             <FaPen />
           </div>
           <h2 className="text-xl font-bold mb-4">Medical Details</h2>
+          
           {/* ...fields here... */}
         </section>
 
