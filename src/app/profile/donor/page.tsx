@@ -10,6 +10,24 @@ import {
 export default function DonorProfile() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [name, setName] = useState("John Doe");
+  const [bloodType, setBloodType] = useState("O+");
+  const [age, setAge] = useState(28);
+  const [gender, setGender] = useState("Male");
+  const [phone, setPhone] = useState("0712 345 678");
+  const [email, setEmail] = useState("johndoe@example.com");
+  const [location, setLocation] = useState("Kisumu, Kenya");
+  const [avatar, setAvatar] = useState("/avatar-placeholder.png");
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const file = e.target.files?.[0];
+  if (file) {
+    const imageUrl = URL.createObjectURL(file);
+    setAvatar(imageUrl);
+  }
+};
+
+
 
   const [showPhone, setShowPhone] = useState(true);
   const [showEmail, setShowEmail] = useState(true);
@@ -74,23 +92,55 @@ export default function DonorProfile() {
 
         {/* Section 1: Basic Info */}
         <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
-          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
+          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition" onClick={() => setEditMode(true)}>
             <FaPen />
           </div>
           <h2 className="text-xl font-semibold mb-4">Basic Information</h2>
           <div className="flex flex-col md:flex-row items-start md:items-center space-x-6">
 
             {/* Avatar is more interactive than a static photo */}
-            <img
-              src="/avatar-placeholder.png"
-              alt="Donor Avatar"
-              className="w-24 h-24 rounded-full border-2 border-red-500"
-            />
+            <label htmlFor="avatar-upload">
+              <img
+                src={avatar}
+                alt="Donor Avatar"
+                className="w-24 h-24 rounded-full border-2 border-red-500 cursor-pointer"
+              />
+            </label>
+            {editMode && (
+              <input
+                type="file"
+                id="avatar-upload"
+                accept="image/*"
+                onChange={handleImageUpload}
+                className="hidden"
+              />
+            )}
+
             <div className="space-y-2 mt-4 md:mt-0">
-              <p><strong>Name:</strong> John Doe</p>
-              <p><strong>Blood Type:</strong> O+</p>
-              <p><strong>Age:</strong> 28</p>
-              <p><strong>Gender:</strong> Male</p>
+              <p>
+                <strong>Name:</strong>{' '}
+                {editMode ? (
+                  <input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="bg-white text-black rounded px-2 py-1 border"
+                  />
+                ) : (
+                  name
+                )}
+              </p>
+              <p>
+                <strong>Blood Type:</strong>{' '}
+                {editMode ? (
+                  <input
+                    value={bloodType}
+                    onChange={(e) => setBloodType(e.target.value)}
+                    className="bg-white text-black rounded px-2 py-1 border"
+                  />
+                ) : (
+                  bloodType
+                )}
+              </p>
               <p>
                 <strong>Phone:</strong> {showPhone ? '0712 345 678' : 'Hidden'}{' '}
                 <button onClick={() => setShowPhone(!showPhone)} className="text-sm ml-2">
@@ -106,6 +156,22 @@ export default function DonorProfile() {
               <p><strong>Location:</strong> Kisumu, Kenya</p>
             </div>
           </div>
+          {editMode && (
+            <div className="mt-4 flex space-x-4">
+              <button
+                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+                onClick={handleSave}
+              >
+                Save
+              </button>
+              <button
+                className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 transition"
+                onClick={() => setEditMode(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          )}
         </section>
 
         {/* Section 2: Health & Eligibility Info */}
