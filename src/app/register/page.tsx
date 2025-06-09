@@ -113,7 +113,7 @@ export default function Register() {
           {/* Optional Medical Info */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
             <select className="p-3 rounded bg-gray-100 text-black">
-              <option value="">Blood Type (Optional)</option>
+              <option value="">Blood Type</option>
               <option value="A+">A+</option>
               <option value="A-">A-</option>
               <option value="B+">B+</option>
@@ -124,7 +124,7 @@ export default function Register() {
               <option value="AB-">AB-</option>
             </select>
             <select className="p-3 rounded bg-gray-100 text-black">
-              <option value="">Are you a donor? (Optional)</option>
+              <option value="">Are you a donor?</option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </select>
