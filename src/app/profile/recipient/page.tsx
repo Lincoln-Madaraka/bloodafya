@@ -107,50 +107,52 @@ export default function RecipientProfile() {
                           className="hidden"
                         />
                       )}
-                      
-                      <div className="space-y-2 mt-4 md:mt-0">
-                        <p><strong>Name:</strong> John Doe</p>
-                        <p><strong>Blood Type:</strong> O+</p>
-                        <p><strong>Age:</strong> 28</p>
-                        <p><strong>Gender:</strong> Male</p>
-                        <p>
-                          <strong>Phone:</strong> {showPhone ? '0712 345 678' : 'Hidden'}{' '}
-                          <button onClick={() => setShowPhone(!showPhone)} className="text-sm ml-2">
-                            {showPhone ? <FaEyeSlash /> : <FaEye />}
-                          </button>
-                        </p>
-                        <p>
-                          <strong>Email:</strong> {showEmail ? 'johndoe@example.com' : 'Hidden'}{' '}
-                          <button onClick={() => setShowEmail(!showEmail)} className="text-sm ml-2">
-                            {showEmail ? <FaEyeSlash /> : <FaEye />}
-                          </button>
-                        </p>
-                        <p><strong>Location:</strong> Kisumu, Kenya</p>
-                      </div>
-                    </div>
-          {/* ...fields here... */}
+        
+          <div className="space-y-2 mt-4 md:mt-0">
+          <p><strong>Name:</strong> {editMode ? <input value={name} onChange={(e) => setName(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : name}</p>
+          <p><strong>Blood Type:</strong> {editMode ? <input value={bloodType} onChange={(e) => setBloodType(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : bloodType}</p>
+          <p><strong>Age:</strong> {editMode ? <input type="number" value={age} onChange={(e) => setAge(Number(e.target.value))} className="bg-white text-black rounded px-2 py-1 border" /> : age}</p>
+          <p><strong>Gender:</strong> {editMode ? <input value={gender} onChange={(e) => setGender(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : gender}</p>
+          <p>
+            <strong>Phone:</strong> {showPhone ? phone : 'Hidden'}{' '}
+            <button onClick={() => setShowPhone(!showPhone)} className="text-sm ml-2">{showPhone ? <FaEyeSlash /> : <FaEye />}</button>
+          </p>
+          <p>
+            <strong>Email:</strong> {showEmail ? email : 'Hidden'}{' '}
+            <button onClick={() => setShowEmail(!showEmail)} className="text-sm ml-2">{showEmail ? <FaEyeSlash /> : <FaEye />}</button>
+          </p>
+          <p><strong>Location:</strong> {editMode ? <input value={location} onChange={(e) => setLocation(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : location}</p>
+            </div>
+          </div>
+     
         </section>
 
         {/* Section 2: Medical Details */}
         <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg relative">
          
           <h2 className="text-xl font-bold mb-4">Medical Details</h2>
-
-          {/* ...fields here... */}
+          <p><strong>Condition:</strong> {editMode ? <input value={condition} onChange={(e) => setCondition(e.target.value)} className="bg-white text-black rounded px-2 py-1 border w-full" /> : condition}</p>
+          <p><strong>Urgency Level:</strong> {editMode ? <input value={urgencyLevel} onChange={(e) => setUrgencyLevel(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : urgencyLevel}</p>
+          <p><strong>Hospital:</strong> {editMode ? <input value={hospital} onChange={(e) => setHospital(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : hospital}</p>
+          <p><strong>Doctor Contact:</strong> {editMode ? <input value={doctorContact} onChange={(e) => setDoctorContact(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : doctorContact}</p>
         </section>
 
         {/* Section 3: Request Overview */}
         <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg relative">
       
           <h2 className="text-xl font-bold mb-4">Request Overview</h2>
-          {/* ...fields here... */}
+          <p><strong>Requested Units:</strong> {editMode ? <input value={requestedUnits} onChange={(e) => setRequestedUnits(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : requestedUnits}</p>
+          <p><strong>Units Fulfilled:</strong> {editMode ? <input value={unitsFulfilled} onChange={(e) => setUnitsFulfilled(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : unitsFulfilled}</p>
+          <p><strong>Request Date:</strong> {editMode ? <input value={requestDate} onChange={(e) => setRequestDate(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : requestDate}</p>
+          <p><strong>Status:</strong> {editMode ? <input value={status} onChange={(e) => setStatus(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : status}</p>
+            
         </section>
 
         {/* Section 4: Donor Matching */}
         <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg relative">
          
           <h2 className="text-xl font-bold mb-4">Donor Matching</h2>
-          {/* ...fields here... */}
+          
         </section>
 
         {/* Section 5: Communication */}
