@@ -99,6 +99,7 @@ export default function DonorProfile() {
 
       {/* Main Profile Content */}
       <main className="p-6 space-y-10 max-w-4xl mx-auto w-full">
+        <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
         {/* Back Button */}
         <div className="flex items-center space-x-2 text-white-300 hover:text-red-500 cursor-pointer transition" onClick={() => router.back()}>
           <FaArrowLeft />
@@ -107,8 +108,8 @@ export default function DonorProfile() {
 
         {/* Section 1: Basic Info */}
         <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
-          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition" onClick={() => setEditMode(true)}>
-            <FaPen />
+          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 flex space-x-2 cursor-pointer transition" onClick={() => setEditMode(true)}>
+            <FaPen /><p>Edit Profile</p>
           </div>
           <h2 className="text-xl font-semibold mb-4">Basic Information</h2>
           <div className="flex flex-col md:flex-row items-start md:items-center space-x-6">
@@ -191,9 +192,7 @@ export default function DonorProfile() {
 
         {/* Section 2: Health & Eligibility Info */}
         <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
-          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
-            <FaPen />
-          </div>
+         
           <h2 className="text-xl font-semibold mb-4">Health & Eligibility</h2>
           <p><strong>Last Donation Date:</strong> April 1, 2025</p>
           <p><strong>Next Eligible Date:</strong> July 1, 2025</p>
@@ -203,9 +202,7 @@ export default function DonorProfile() {
 
         {/* Section 3: Donation Activity */}
         <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
-          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
-            <FaPen />
-          </div>
+         
           <h2 className="text-xl font-semibold mb-4">Donation Activity</h2>
           <p><strong>Total Donations:</strong> 5</p>
           <p><strong>Successful Donations:</strong> 4</p>
@@ -217,9 +214,7 @@ export default function DonorProfile() {
 
         {/* Section 4: Engagement */}
         <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
-          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
-            <FaPen />
-          </div>
+         
           <h2 className="text-xl font-semibold mb-4">Engagement</h2>
           <p><strong>Recipient Requests:</strong> 2 Pending, 1 Accepted</p>
           <p><strong>Connection Requests:</strong> Available</p>
@@ -229,9 +224,7 @@ export default function DonorProfile() {
 
         {/* Section 5: Medical Clearance */}
         <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
-          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
-            <FaPen />
-          </div>
+       
           <h2 className="text-xl font-semibold mb-4">Medical Clearance</h2>
           <p><strong>Clinic Notes:</strong> Verified – KEMRI</p>
           <p><strong>COVID Vaccine Status:</strong> Fully vaccinated</p>
@@ -240,10 +233,7 @@ export default function DonorProfile() {
 
         {/* Section 6: Privacy Controls */}
         <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
-          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
-            <FaPen />
-          </div>
-          <h2 className="text-xl font-semibold mb-4">Privacy Controls</h2>
+                   <h2 className="text-xl font-semibold mb-4">Privacy Controls</h2>
           <p><strong>Phone/Email Visibility:</strong> {showPhone ? 'Shown' : 'Hidden'} / {showEmail ? 'Shown' : 'Hidden'}</p>
           <p><strong>Profile Discoverability:</strong> Enabled</p>
           <p><strong>Auto-Match Settings:</strong> Match within 50km & same blood group</p>
@@ -251,9 +241,7 @@ export default function DonorProfile() {
 
         {/* Section 7: Dashboard Highlights */}
         <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
-          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
-            <FaPen />
-          </div>
+      
           <h2 className="text-xl font-semibold mb-4">Dashboard Highlights</h2>
           <p><strong>Upcoming Drives:</strong> Red Cross Kisumu - June 15</p>
           <p><strong>Eligible in:</strong> 22 days</p>
@@ -262,6 +250,7 @@ export default function DonorProfile() {
           <p><strong>Leaderboard:</strong> Top 10 Donors in Kisumu</p>
           <p><strong>Tips:</strong> Stay hydrated, eat iron-rich foods</p>
       </section>
+    </section>
       </main>
 
       {/* Footer */}
