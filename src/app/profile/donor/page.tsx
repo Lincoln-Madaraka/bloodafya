@@ -278,7 +278,7 @@ export default function DonorProfile() {
           <p><strong>Auto-Match Settings:</strong> Match within 50km & same blood group</p>
         </section>
       {editMode && (
-            <div className="mt-4 flex space-x-4">
+            <div className="mt-4 flex justify-between">
               <button
                 className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 transition"
                 onClick={() => setEditMode(false)}
@@ -286,7 +286,7 @@ export default function DonorProfile() {
                 Cancel
               </button>
                <button
-                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-red-800 transition"
+                className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-800 transition"
                 onClick={handleSave}
               >
                 Save
