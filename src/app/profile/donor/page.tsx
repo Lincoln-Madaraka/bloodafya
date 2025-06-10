@@ -102,7 +102,7 @@ export default function DonorProfile() {
           </div>
           </div>
           <button onClick={() => router.push('/history')}>History</button>
-          <button onClick={() => router.push('/drives')}>Upcoming Drives</button>
+          <button onClick={() => router.push('/messages')}>Messages</button>
           <button onClick={() => router.push('/settings')}>Settings</button>
           <button onClick={() => router.push('/logout')}>Logout</button>
         </nav>

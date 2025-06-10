@@ -65,6 +65,7 @@ export default function RecipientProfile() {
 
       {/* Main Content */}
       <main className="p-6 space-y-10 max-w-4xl mx-auto w-full">
+        <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg relative">
         {/* Back Button */}
         <div className="flex items-center space-x-2 text-white hover:text-red-500 cursor-pointer transition" onClick={() => router.back()}>
           <FaArrowLeft />
@@ -110,9 +111,7 @@ export default function RecipientProfile() {
 
         {/* Section 2: Medical Details */}
         <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg relative">
-          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
-            <FaPen />
-          </div>
+         
           <h2 className="text-xl font-bold mb-4">Medical Details</h2>
 
           {/* ...fields here... */}
@@ -120,40 +119,34 @@ export default function RecipientProfile() {
 
         {/* Section 3: Request Overview */}
         <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg relative">
-          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
-            <FaPen />
-          </div>
+      
           <h2 className="text-xl font-bold mb-4">Request Overview</h2>
           {/* ...fields here... */}
         </section>
 
         {/* Section 4: Donor Matching */}
         <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg relative">
-          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
-            <FaPen />
-          </div>
+         
           <h2 className="text-xl font-bold mb-4">Donor Matching</h2>
           {/* ...fields here... */}
         </section>
 
         {/* Section 5: Communication */}
         <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg relative">
-          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
-            <FaPen />
-          </div>
+          
           <h2 className="text-xl font-bold mb-4">Communication</h2>
           {/* ...fields here... */}
         </section>
 
         {/* Section 6: Dashboard Highlights */}
         <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg relative">
-          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 cursor-pointer transition">
-            <FaPen />
-          </div>
+          
           <h2 className="text-xl font-bold mb-4">Dashboard Highlights</h2>
           {/* ...fields here... */}
         </section>
+      </section>
       </main>
+
       {/* Footer */}
       <footer className="bg-black bg-opacity-60 text-gray-300 text-center py-4 mt-auto">
         <div className="flex justify-center items-center space-x-4 text-sm">
