@@ -30,24 +30,6 @@ export default function DonorProfile() {
   const [locationHistory, setLocationHistory] = useState("Kisumu Hospital, Aga Khan Kisumu");
   const [badges, setBadges] = useState("🏅 Reliable Donor, 💉 First 3!");
 
-  const [recipientRequests, setRecipientRequests] = useState("2 Pending, 1 Accepted");
-  const [connectionRequests, setConnectionRequests] = useState("Available");
-  const [messageCenter, setMessageCenter] = useState("3 unread messages");
-  const [availability, setAvailability] = useState("✅ Available for emergency contact");
-
-  const [clinicNotes, setClinicNotes] = useState("Verified – KEMRI");
-  const [covidStatus, setCovidStatus] = useState("Fully vaccinated");
-  const [stdTest, setStdTest] = useState("Cleared");
-
-  const [profileDiscoverability, setProfileDiscoverability] = useState("Enabled");
-  const [autoMatchSettings, setAutoMatchSettings] = useState("Match within 50km & same blood group");
-
-  const [upcomingDrives, setUpcomingDrives] = useState("Red Cross Kisumu - June 15");
-  const [eligibleIn, setEligibleIn] = useState("22 days");
-  const [recentFeedback, setRecentFeedback] = useState("“Thank you for saving my mom’s life”");
-  const [impactTracker, setImpactTracker] = useState("Saved 9 lives in 2025");
-  const [leaderboard, setLeaderboard] = useState("Top 10 Donors in Kisumu");
-  const [tips, setTips] = useState("Stay hydrated, eat iron-rich foods");
   const handleSave = async () => {
   // For now, just log the updated data — we’ll wire to DB/API next
   console.log("Saving data:", {
