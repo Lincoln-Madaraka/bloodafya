@@ -17,7 +17,7 @@ export default function Home() {
     >
       <div className="flex w-full">
       {/* Header */}
-      <div className="hidden md:flex w-full flex-col">
+      <div className="hidden md:flex w-full flex-row">
       <header className="flex-1 flex justify-between items-center p-6 bg-black bg-opacity-40 px-6 py-4">
         <a href='/'><div className="flex flex-col items-start">
           <div className="flex items-center space-x-2">
