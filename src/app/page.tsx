@@ -5,6 +5,8 @@ import React from 'react';
 import { FaTwitter, FaInstagram, FaGlobe, FaEnvelope, FaSearch } from 'react-icons/fa';
 export default function Home() {
   const router = useRouter();
+  const [menuOpen, setMenuOpen] = React.useState(false);
+
   return (
     <div
       className="min-h-screen bg-cover bg-center relative text-white flex flex-col"
