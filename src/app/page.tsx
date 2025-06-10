@@ -17,6 +17,7 @@ export default function Home() {
     >
       <div className="flex w-full">
       {/* Header */}
+      <div className="hidden md:flex w-full flex-col">
       <header className="flex-1 flex justify-between items-center p-6 bg-black bg-opacity-40 px-6 py-4">
         <a href='/'><div className="flex flex-col items-start">
           <div className="flex items-center space-x-2">
@@ -56,6 +57,7 @@ export default function Home() {
           <button  onClick={() => router.push('/register')} className="px-4 py-2 bg-gray-700 text-lg rounded-md hover:bg-red-700 transition">Signup</button>
         </div>
       </nav>
+      </div>
       </div>
       {/* Mobile Nav (hidden on medium+ screens) */}
       <div className="flex md:hidden justify-between items-center w-full px-6 py-4">
