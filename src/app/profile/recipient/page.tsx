@@ -9,9 +9,19 @@ import {
 
 export default function RecipientProfile() {
   const router = useRouter();
+  const [editMode, setEditMode] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [showPhone, setShowPhone] = useState(true);
   const [showEmail, setShowEmail] = useState(true);
+  const [avatar, setAvatar] = useState("/avatar-placeholder.png");
+   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setAvatar(imageUrl);
+    }
+  };
+  
 
   return (
     <div
@@ -80,12 +90,24 @@ export default function RecipientProfile() {
           <h2 className="text-xl font-bold mb-4">Basic Information</h2>
           <div className="flex flex-col md:flex-row items-start md:items-center space-x-6">
           
-                      {/* Avatar is more interactive than a static photo */}
-                      <img
-                        src="/avatar-placeholder.png"
-                        alt="Donor Avatar"
-                        className="w-24 h-24 rounded-full border-2 border-red-500"
-                      />
+                    {/* Avatar is more interactive than a static photo */}
+                    <label htmlFor="avatar-upload">
+                        <img
+                          src={avatar}
+                          alt="Donor Avatar"
+                          className="w-24 h-24 rounded-full border-2 border-white-500 cursor-pointer"
+                        />
+                    </label>
+                      {editMode && (
+                        <input
+                          type="file"
+                          id="avatar-upload"
+                          accept="image/*"
+                          onChange={handleImageUpload}
+                          className="hidden"
+                        />
+                      )}
+                      
                       <div className="space-y-2 mt-4 md:mt-0">
                         <p><strong>Name:</strong> John Doe</p>
                         <p><strong>Blood Type:</strong> O+</p>
