@@ -100,6 +100,8 @@ export default function RecipientProfile() {
           </div>
           <button onClick={() => router.push('/requests')}>Requests</button>
           <button onClick={() => router.push('/matches')}>Matches</button>
+          <button onClick={() => router.push('/messages')}>Messages</button>
+          <button onClick={() => router.push('/notifications')}>Notifications</button>
           <button onClick={() => router.push('/settings')}>Settings</button>
           <button onClick={() => router.push('/logout')}>Logout</button>
         </nav>
@@ -113,7 +115,7 @@ export default function RecipientProfile() {
           <FaArrowLeft />
           <span className="text-lg font-bold">Back</span>
         </div>
-        <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 flex space-x-2 cursor-pointer transition">
+        <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 flex space-x-2 cursor-pointer transition" onClick={() => setEditMode(true)}>
             <FaPen /><p>Edit Profile</p>
           </div>
 
