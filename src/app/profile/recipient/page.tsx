@@ -198,7 +198,7 @@ export default function RecipientProfile() {
           <p><strong>Notification Settings:</strong> {editMode ? <input value={notifications} onChange={(e) => setNotifications(e.target.value)} className="bg-white text-black rounded px-2 py-1 border w-full" /> : notifications}</p>
         </section>
         {editMode && (
-            <div className="mt-4 flex justify-between">
+            <div className="mt-4 flex justify-around">
               <button
                 className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 transition"
                 onClick={() => setEditMode(false)}
