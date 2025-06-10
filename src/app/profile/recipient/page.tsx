@@ -152,14 +152,16 @@ export default function RecipientProfile() {
         <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg relative">
          
           <h2 className="text-xl font-bold mb-4">Donor Matching</h2>
-          
+          <p><strong>Matches Found:</strong> {matchesFound}</p>
+          <p><strong>Matched Donor Contact:</strong> {editMode ? <input value={matchedDonor} onChange={(e) => setMatchedDonor(e.target.value)} className="bg-white text-black rounded px-2 py-1 border w-full" /> : matchedDonor}</p>
         </section>
 
         {/* Section 5: Communication */}
         <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg relative">
           
           <h2 className="text-xl font-bold mb-4">Communication</h2>
-          {/* ...fields here... */}
+          <p><strong>Preferred Contact Time:</strong> {editMode ? <input value={contactTime} onChange={(e) => setContactTime(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : contactTime}</p>
+          <p><strong>Notification Settings:</strong> {editMode ? <input value={notifications} onChange={(e) => setNotifications(e.target.value)} className="bg-white text-black rounded px-2 py-1 border w-full" /> : notifications}</p>
         </section>
 
         {/* Section 6: Dashboard Highlights */}
