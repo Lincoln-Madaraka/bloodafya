@@ -163,13 +163,23 @@ export default function RecipientProfile() {
           <p><strong>Preferred Contact Time:</strong> {editMode ? <input value={contactTime} onChange={(e) => setContactTime(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : contactTime}</p>
           <p><strong>Notification Settings:</strong> {editMode ? <input value={notifications} onChange={(e) => setNotifications(e.target.value)} className="bg-white text-black rounded px-2 py-1 border w-full" /> : notifications}</p>
         </section>
+        {editMode && (
+            <div className="mt-4 flex space-x-4">
+              <button
+                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+                onClick={handleSave}
+              >
+                Save
+              </button>
+              <button
+                className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 transition"
+                onClick={() => setEditMode(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          )}
 
-        {/* Section 6: Dashboard Highlights */}
-        <section className="bg-black bg-opacity-40 rounded-xl p-6 shadow-lg relative">
-          
-          <h2 className="text-xl font-bold mb-4">Dashboard Highlights</h2>
-          {/* ...fields here... */}
-        </section>
       </section>
       </main>
 
