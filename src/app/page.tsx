@@ -57,6 +57,41 @@ export default function Home() {
         </div>
       </nav>
       </div>
+      {/* Mobile Nav (hidden on medium+ screens) */}
+      <div className="flex md:hidden justify-between items-center w-full px-6 py-4">
+        {/* Logo */}
+        <div className="flex items-center space-x-2">
+          <img src="/blood-afya-icon.png" alt="BloodAfya Logo" className="w-8 h-8" />
+          <h1 className="text-lg font-bold">BloodAfya</h1>
+        </div>
+
+        {/* Search Bar */}
+        <div className="flex items-center flex-grow mx-2 bg-white bg-opacity-90 rounded-full px-3 py-1">
+          <FaSearch className="text-gray-500" />
+          <input
+            type="text"
+            placeholder="Search..."
+            className="ml-2 bg-transparent placeholder-gray-500 text-black w-full focus:outline-none text-sm"
+          />
+        </div>
+
+        {/* Hamburger icon */}
+        <button onClick={() => setMenuOpen(!menuOpen)} className="text-white focus:outline-none">
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      {/* Dropdown menu, mobile only */}
+      {menuOpen && (
+        <div className="md:hidden bg-black bg-opacity-70 px-6 py-4 space-y-4 text-center">
+          <a href="/" className="block text-white hover:text-red-500 text-lg font-semibold">Home</a>
+          <a href="/contact" className="block text-white hover:text-red-500 text-lg font-semibold">Contact</a>
+          <button onClick={() => router.push('/login')} className="w-full bg-gray-700 py-2 rounded hover:bg-red-700 text-white">Login</button>
+          <button onClick={() => router.push('/register')} className="w-full bg-gray-700 py-2 rounded hover:bg-red-700 text-white">Signup</button>
+        </div>
+      )}
 
       {/* Main Content */}
       <main className="flex items-center justify-start px-10 py-20 max-w-4xl flex-grow">
