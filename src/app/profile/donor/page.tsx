@@ -279,15 +279,6 @@ export default function DonorProfile() {
           <p><strong>Badges:</strong> {editMode ? <input value={badges} onChange={(e) => setBadges(e.target.value)} className="bg-white text-black rounded px-2 py-1 border w-full" /> : badges}</p>
         </section>
 
-        {/* Section 4: Engagement */}
-        <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
-          <h2 className="text-xl font-semibold mb-4">Engagement</h2>
-          <p><strong>Recipient Requests:</strong> {editMode ? <input value={recipientRequests} onChange={(e) => setRecipientRequests(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : recipientRequests}</p>
-          <p><strong>Connection Requests:</strong> {editMode ? <input value={connectionRequests} onChange={(e) => setConnectionRequests(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : connectionRequests}</p>
-          <p><strong>Message Center:</strong> {editMode ? <input value={messageCenter} onChange={(e) => setMessageCenter(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : messageCenter}</p>
-          <p><strong>Availability:</strong> {editMode ? <input value={availability} onChange={(e) => setAvailability(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : availability}</p>
-        </section>
-
         {/* Section 5: Medical Clearance */}
         <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
        
@@ -304,18 +295,6 @@ export default function DonorProfile() {
           <p><strong>Profile Discoverability:</strong> Enabled</p>
           <p><strong>Auto-Match Settings:</strong> Match within 50km & same blood group</p>
         </section>
-
-        {/* Section 7: Dashboard Highlights */}
-        <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
-      
-          <h2 className="text-xl font-semibold mb-4">Dashboard Highlights</h2>
-          <p><strong>Upcoming Drives:</strong> Red Cross Kisumu - June 15</p>
-          <p><strong>Eligible in:</strong> 22 days</p>
-          <p><strong>Recent Feedback:</strong> “Thank you for saving my mom’s life”</p>
-          <p><strong>Impact Tracker:</strong> Saved 9 lives in 2025</p>
-          <p><strong>Leaderboard:</strong> Top 10 Donors in Kisumu</p>
-          <p><strong>Tips:</strong> Stay hydrated, eat iron-rich foods</p>
-      </section>
       {editMode && (
             <div className="mt-4 flex space-x-4">
               <button
