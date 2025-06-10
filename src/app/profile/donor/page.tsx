@@ -13,6 +13,10 @@ export default function DonorProfile() {
   const [editMode, setEditMode] = useState(false);
   const [name, setName] = useState("John Doe");
   const [bloodType, setBloodType] = useState("O+");
+  const [donationFrequency, setDonationFrequency] = useState("3 times/year");
+  const [lastDonationDate, setLastDonationDate] = useState("April 1, 2025");
+  const [nextEligibleDate, setNextEligibleDate] = useState("July 1, 2025");
+  const [eligibilityTimer, setEligibilityTimer] = useState("22 days");
   const [age, setAge] = useState(28);
   const [gender, setGender] = useState("Male");
   const [phone, setPhone] = useState("0712 345 678");
@@ -178,12 +182,64 @@ export default function DonorProfile() {
 
         {/* Section 2: Health & Eligibility Info */}
         <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
-         
+
           <h2 className="text-xl font-semibold mb-4">Health & Eligibility</h2>
-          <p><strong>Last Donation Date:</strong> April 1, 2025</p>
-          <p><strong>Next Eligible Date:</strong> July 1, 2025</p>
-          <p><strong>Eligibility Timer:</strong> You can donate in 22 days</p>
-          <p><strong>Donation Frequency:</strong> 3 times/year</p>
+          <p>
+            <strong>Last Donation Date:</strong>{' '}
+            {editMode ? (
+              <input
+                type="text"
+                value={lastDonationDate}
+                onChange={(e) => setLastDonationDate(e.target.value)}
+                className="bg-white text-black rounded px-2 py-1 border"
+              />
+            ) : (
+              lastDonationDate
+            )}
+          </p>
+          <p>
+            <strong>Donation Frequency:</strong>{' '}
+            {editMode ? (
+              <input
+                type="text"
+                value={donationFrequency}
+                onChange={(e) => setDonationFrequency(e.target.value)}
+                className="bg-white text-black rounded px-2 py-1 border"
+              />
+            ) : (
+              donationFrequency
+            )}
+          </p>
+          <p><strong>Age:</strong> {editMode ? (
+              <input
+                type="number"
+                value={age}
+                onChange={(e) => setAge(Number(e.target.value))}
+                className="bg-white text-black rounded px-2 py-1 border"
+              />
+            ) : (
+              age
+            )} years</p>
+          <p><strong>Next Elligible Date:</strong> {editMode ? (
+              <input
+                type="text"
+                value="July 1, 2025"
+                onChange={(e) => setNextEligibleDate(e.target.value)}
+                className="bg-white text-black rounded px-2 py-1 border"
+              />
+            ) : (
+              nextEligibleDate
+            )}</p>
+          <p><strong>Eligibility Timer:</strong> {editMode ? (
+              <input
+                type="text"
+                value="22 days"
+                onChange={(e) => setEligibilityTimer(e.target.value)}
+                className="bg-white text-black rounded px-2 py-1 border"
+              />
+            ) : (
+              "22 days"
+            )}</p>
         </section>
 
         {/* Section 3: Donation Activity */}
