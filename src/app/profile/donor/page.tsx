@@ -23,6 +23,31 @@ export default function DonorProfile() {
   const [email, setEmail] = useState("johndoe@example.com");
   const [location, setLocation] = useState("Kisumu, Kenya");
   const [avatar, setAvatar] = useState("/avatar-placeholder.png");
+  const [totalDonations, setTotalDonations] = useState("5");
+  const [successfulDonations, setSuccessfulDonations] = useState("4");
+  const [drivesAttended, setDrivesAttended] = useState("3");
+  const [impact, setImpact] = useState("You’ve helped save 9 lives");
+  const [locationHistory, setLocationHistory] = useState("Kisumu Hospital, Aga Khan Kisumu");
+  const [badges, setBadges] = useState("🏅 Reliable Donor, 💉 First 3!");
+
+  const [recipientRequests, setRecipientRequests] = useState("2 Pending, 1 Accepted");
+  const [connectionRequests, setConnectionRequests] = useState("Available");
+  const [messageCenter, setMessageCenter] = useState("3 unread messages");
+  const [availability, setAvailability] = useState("✅ Available for emergency contact");
+
+  const [clinicNotes, setClinicNotes] = useState("Verified – KEMRI");
+  const [covidStatus, setCovidStatus] = useState("Fully vaccinated");
+  const [stdTest, setStdTest] = useState("Cleared");
+
+  const [profileDiscoverability, setProfileDiscoverability] = useState("Enabled");
+  const [autoMatchSettings, setAutoMatchSettings] = useState("Match within 50km & same blood group");
+
+  const [upcomingDrives, setUpcomingDrives] = useState("Red Cross Kisumu - June 15");
+  const [eligibleIn, setEligibleIn] = useState("22 days");
+  const [recentFeedback, setRecentFeedback] = useState("“Thank you for saving my mom’s life”");
+  const [impactTracker, setImpactTracker] = useState("Saved 9 lives in 2025");
+  const [leaderboard, setLeaderboard] = useState("Top 10 Donors in Kisumu");
+  const [tips, setTips] = useState("Stay hydrated, eat iron-rich foods");
   const handleSave = async () => {
   // For now, just log the updated data — we’ll wire to DB/API next
   console.log("Saving data:", {
@@ -246,22 +271,21 @@ export default function DonorProfile() {
         <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
          
           <h2 className="text-xl font-semibold mb-4">Donation Activity</h2>
-          <p><strong>Total Donations:</strong> 5</p>
-          <p><strong>Successful Donations:</strong> 4</p>
-          <p><strong>Drives Attended:</strong> 3</p>
-          <p><strong>Impact:</strong> You’ve helped save 9 lives</p>
-          <p><strong>Location History:</strong> Kisumu Hospital, Aga Khan Kisumu</p>
-          <p><strong>Badges:</strong> 🏅 Reliable Donor, 💉 First 3!</p>
+          <p><strong>Total Donations:</strong> {editMode ? <input value={totalDonations} onChange={(e) => setTotalDonations(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : totalDonations}</p>
+          <p><strong>Successful Donations:</strong> {editMode ? <input value={successfulDonations} onChange={(e) => setSuccessfulDonations(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : successfulDonations}</p>
+          <p><strong>Drives Attended:</strong> {editMode ? <input value={drivesAttended} onChange={(e) => setDrivesAttended(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : drivesAttended}</p>
+          <p><strong>Impact:</strong> {editMode ? <input value={impact} onChange={(e) => setImpact(e.target.value)} className="bg-white text-black rounded px-2 py-1 border w-full" /> : impact}</p>
+          <p><strong>Location History:</strong> {editMode ? <input value={locationHistory} onChange={(e) => setLocationHistory(e.target.value)} className="bg-white text-black rounded px-2 py-1 border w-full" /> : locationHistory}</p>
+          <p><strong>Badges:</strong> {editMode ? <input value={badges} onChange={(e) => setBadges(e.target.value)} className="bg-white text-black rounded px-2 py-1 border w-full" /> : badges}</p>
         </section>
 
         {/* Section 4: Engagement */}
         <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
-         
           <h2 className="text-xl font-semibold mb-4">Engagement</h2>
-          <p><strong>Recipient Requests:</strong> 2 Pending, 1 Accepted</p>
-          <p><strong>Connection Requests:</strong> Available</p>
-          <p><strong>Message Center:</strong> (3 unread messages)</p>
-          <p><strong>Availability:</strong> ✅ Available for emergency contact</p>
+          <p><strong>Recipient Requests:</strong> {editMode ? <input value={recipientRequests} onChange={(e) => setRecipientRequests(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : recipientRequests}</p>
+          <p><strong>Connection Requests:</strong> {editMode ? <input value={connectionRequests} onChange={(e) => setConnectionRequests(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : connectionRequests}</p>
+          <p><strong>Message Center:</strong> {editMode ? <input value={messageCenter} onChange={(e) => setMessageCenter(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : messageCenter}</p>
+          <p><strong>Availability:</strong> {editMode ? <input value={availability} onChange={(e) => setAvailability(e.target.value)} className="bg-white text-black rounded px-2 py-1 border" /> : availability}</p>
         </section>
 
         {/* Section 5: Medical Clearance */}
