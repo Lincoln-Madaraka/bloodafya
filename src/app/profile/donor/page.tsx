@@ -174,22 +174,6 @@ export default function DonorProfile() {
               <p><strong>Location:</strong> Kisumu, Kenya</p>
             </div>
           </div>
-          {editMode && (
-            <div className="mt-4 flex space-x-4">
-              <button
-                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
-                onClick={handleSave}
-              >
-                Save
-              </button>
-              <button
-                className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 transition"
-                onClick={() => setEditMode(false)}
-              >
-                Cancel
-              </button>
-            </div>
-          )}
         </section>
 
         {/* Section 2: Health & Eligibility Info */}
@@ -252,6 +236,22 @@ export default function DonorProfile() {
           <p><strong>Leaderboard:</strong> Top 10 Donors in Kisumu</p>
           <p><strong>Tips:</strong> Stay hydrated, eat iron-rich foods</p>
       </section>
+      {editMode && (
+            <div className="mt-4 flex space-x-4">
+              <button
+                className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition"
+                onClick={handleSave}
+              >
+                Save
+              </button>
+              <button
+                className="bg-gray-400 text-white px-4 py-2 rounded hover:bg-gray-500 transition"
+                onClick={() => setEditMode(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          )}
     </section>
       </main>
 
