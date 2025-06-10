@@ -14,6 +14,38 @@ export default function RecipientProfile() {
   const [showPhone, setShowPhone] = useState(true);
   const [showEmail, setShowEmail] = useState(true);
   const [avatar, setAvatar] = useState("/avatar-placeholder.png");
+   const [name, setName] = useState("John Doe");
+  const [bloodType, setBloodType] = useState("O+");
+  const [age, setAge] = useState(28);
+  const [gender, setGender] = useState("Male");
+  const [phone, setPhone] = useState("0712 345 678");
+  const [email, setEmail] = useState("johndoe@example.com");
+  const [location, setLocation] = useState("Kisumu, Kenya");
+  const [condition, setCondition] = useState("Anemia");
+  const [urgencyLevel, setUrgencyLevel] = useState("High");
+  const [hospital, setHospital] = useState("KEMRI Hospital");
+  const [doctorContact, setDoctorContact] = useState("Dr. Achieng");
+
+  const [requestedUnits, setRequestedUnits] = useState("3");
+  const [unitsFulfilled, setUnitsFulfilled] = useState("1");
+  const [requestDate, setRequestDate] = useState("June 5, 2025");
+  const [status, setStatus] = useState("Pending");
+
+  const [matchedDonor, setMatchedDonor] = useState("Jane Wanjiku");
+  const [matchesFound, setMatchesFound] = useState(4);
+
+  const [contactTime, setContactTime] = useState("Anytime");
+  const [notifications, setNotifications] = useState("SMS + Email");
+
+  const [profileViews, setProfileViews] = useState("123");
+  const [supportMessages, setSupportMessages] = useState("6");
+  const handleSave = () => {
+  // Do save logic here
+  setEditMode(false);
+};
+
+
+
    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
