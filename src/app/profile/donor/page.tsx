@@ -105,12 +105,14 @@ export default function DonorProfile() {
           <FaArrowLeft />
           <span className="text-lg font-bold">Back</span>
         </div>
+        <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 flex space-x-2 cursor-pointer transition" onClick={() => setEditMode(true)}>
+            <FaPen /><p>Edit Profile</p>
+          </div>
+
 
         {/* Section 1: Basic Info */}
         <section className="relative bg-black bg-opacity-40 rounded-xl p-6 shadow-lg">
-          <div className="absolute top-4 right-4 text-gray-300 hover:text-red-500 flex space-x-2 cursor-pointer transition" onClick={() => setEditMode(true)}>
-            <FaPen /><p>Edit Profile</p>
-          </div>
+        
           <h2 className="text-xl font-semibold mb-4">Basic Information</h2>
           <div className="flex flex-col md:flex-row items-start md:items-center space-x-6">
 
