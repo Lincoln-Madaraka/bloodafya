@@ -30,6 +30,6 @@
     "typescript": "^5"
   },
   "resolutions": {
-  "brace-expansion": "^4.0.1"
+  "brace-expansion": "^4.0.0"
 }
 }
