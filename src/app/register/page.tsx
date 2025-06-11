@@ -6,8 +6,9 @@ import { useRouter } from 'next/navigation';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 export default function Register() {
-  const router = useRouter();
+  const [email, setEmail] = useState('');
 
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [password, setPassword] = useState('');
@@ -57,7 +58,7 @@ export default function Register() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <input type="text" placeholder="Full Name" className="p-3 rounded bg-gray-100 text-black" />
-            <input type="email" placeholder="Email Address" className="p-3 rounded bg-gray-100 text-black" />
+            <input type="email" placeholder="Email Address" className="p-3 rounded bg-gray-100 text-black"  value={email} onChange={(e) => setEmail(e.target.value)}/>
             <input type="tel" placeholder="Phone Number" className="p-3 rounded bg-gray-100 text-black" />
             
             <div className="relative">
