@@ -1,20 +1,38 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { FaTwitter, FaInstagram, FaGlobe, FaEnvelope, FaSearch } from 'react-icons/fa';
 export default function Home() {
   const router = useRouter();
+  const images = [
+  "/dash-background.jpeg",
+  "/login.jpeg",
+  "/signup-background.jpeg",
+  "/background-contact.jpeg"
+];
+  const [bgIndex, setBgIndex] = useState(0);
+      useEffect(() => {
+      const interval = setInterval(() => {
+        setBgIndex((prevIndex) => (prevIndex + 1) % images.length);
+      }, 3000); // 6 seconds
+      return () => clearInterval(interval);
+    }, []);
   const [menuOpen, setMenuOpen] = React.useState(false);
 
   return (
-    <div
-      className="min-h-screen bg-cover bg-center relative text-white flex flex-col"
+   <motion.div
+      key={bgIndex} // Re-animates on change
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1.5 }}
+      className="min-h-screen bg-cover bg-center relative text-white flex flex-col transition-all duration-1000"
       style={{
-        backgroundImage:
-          "linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/dash-background.jpeg')",
+        backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${images[bgIndex]}')`,
       }}
     >
+   
       <div className="flex w-full">
       {/* Header */}
       <div className="hidden md:flex w-full flex-row">
@@ -98,17 +116,53 @@ export default function Home() {
       {/* Main Content */}
       <main className="flex items-center justify-start px-10 py-20 max-w-4xl flex-grow">
         <div className="space-y-6">
-          <h2 className="text-4xl font-bold leading-snug">
-            Connecting Life. <br /> One Drop at a Time.
-          </h2>
-          <p className="text-lg text-gray-200">
-            BloodAfya is a life-saving platform that bridges the gap between blood donors and
-            recipients in real-time. Whether you're looking to give or in need of hope, we make
-            finding the right match simple, fast, and reliable.
-          </p>
-          <p className="text-lg text-gray-200">
-            Join a growing network of heroes who are changing lives—one donation at a time.
-          </p>
+              <motion.div
+              className="space-y-6"
+              initial="hidden"
+              animate="visible"
+              variants={{
+                visible: {
+                  transition: {
+                    staggerChildren: 0.3, // Delay between elements
+                  },
+                },
+              }}
+              >
+              {/* Heading */}
+            <motion.h2
+              className="text-4xl font-bold leading-snug"
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+              }}
+            >
+              Connecting Life. <br /> One Drop at a Time.
+            </motion.h2>
+
+            {/* Paragraph 1 */}
+            <motion.p
+              className="text-lg text-gray-200"
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+              }}
+            >
+              BloodAfya is a life-saving platform that bridges the gap between blood donors and recipients
+              in real-time. Whether you're looking to give or in need of hope, we make finding the right
+              match simple, fast, and reliable.
+            </motion.p>
+
+            {/* Paragraph 2 */}
+            <motion.p
+              className="text-lg text-gray-200"
+              variants={{
+                hidden: { opacity: 0, y: 30 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+              }}
+            >
+              Join a growing network of heroes who are changing lives—one donation at a time.
+            </motion.p>
+          </motion.div>
           <button onClick={() => router.push('/register')} className="bg-red-700 hover:bg-red-800 transition px-6 py-2 rounded-xl shadow-lg">
             Get Started
           </button>
@@ -136,7 +190,7 @@ export default function Home() {
         <p className="ml-4">&copy; {new Date().getFullYear()} BloodAfya. All rights reserved.</p>
       </div>
     </footer>
-    </div>
+    </motion.div>
     
   );
 }
