@@ -187,7 +187,7 @@ export default function Home() {
         </a>
         <span className="text-gray-400 text-lg">•</span>
         {/* Text */}
-        <p className="ml-4">&copy; {new Date().getFullYear()} BloodAfya. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} BloodAfya. All rights reserved.</p>
       </div>
     </footer>
     </motion.div>
