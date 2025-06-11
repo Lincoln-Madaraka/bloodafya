@@ -80,9 +80,12 @@ export default function Home() {
       {/* Mobile Nav (hidden on medium+ screens) */}
       <div className="flex md:hidden  justify-between items-center w-full px-6 py-4">
         {/* Logo */}
+        <div className="flex flex-col items-start">
         <div className="flex items-center space-x-2">
           <img src="/blood-afya-icon.png" alt="BloodAfya Logo" className="w-8 h-8" />
           <h1 className="text-lg font-bold">BloodAfya</h1>
+        </div>
+        <p className="italic text-xs text-white">Donate Blood, Save Lives.</p>
         </div>
 
       {/* Hamburger icon */}
