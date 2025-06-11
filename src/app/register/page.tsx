@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { FaArrowLeft, FaTwitter, FaInstagram, FaGlobe, FaEnvelope, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '@/lib/firebase';
 export default function Register() {
   const [email, setEmail] = useState('');
 
@@ -149,22 +148,7 @@ export default function Register() {
             <button
               disabled={!acceptedTerms}
               className={`w-full py-3 rounded ${acceptedTerms ? 'bg-red-700 hover:bg-red-800' : 'bg-gray-600 cursor-not-allowed'} text-white font-semibold`}
-              onClick={async (e) => {
-              e.preventDefault();
-              if (password !== confirmPassword) {
-                alert("Passwords do not match.");
-                return;
-              }
-
-              try {
-                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-                console.log("User created:", userCredential.user);
-                // You can redirect or store additional profile info in Firestore here
-              } catch (error: any) {
-                console.error("Sign-up error:", error.message);
-                alert(error.message);
-              }
-            }}
+            
             >
               Create Account
             </button>
