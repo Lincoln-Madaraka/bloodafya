@@ -46,7 +46,7 @@ export default function Register() {
       <main className="flex justify-center items-center flex-grow px-4">
         <div className="bg-black bg-opacity-60 p-8 rounded-xl max-w-2xl w-full space-y-6 shadow-lg">
           <button
-              onClick={() => router.back()}
+              onClick={() =>router.push('/')}
               className="text-gray-300 hover:text-red-500 mb-4 flex items-center space-x-2"
             >
               <FaArrowLeft />
