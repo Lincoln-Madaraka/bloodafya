@@ -26,7 +26,6 @@ export default function Home() {
       key={bgIndex} // Re-animates on change
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 1.5 }}
       className="min-h-screen bg-cover bg-center relative text-white flex flex-col transition-all duration-1000"
       style={{
         backgroundImage: `linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${images[bgIndex]}')`,
