@@ -10,22 +10,20 @@ A platform that connects blood donors with recipients, streamlining the process 
 
 ## 🧪 Tech Stack
 
-### 🧪 Tech Stack
+**Frontend:**  
+![Next.js](https://img.shields.io/badge/-Next.js-000000?logo=next.js&logoColor=white)  
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)  
+![CSS3](https://img.shields.io/badge/-CSS3-1572B6?logo=css3&logoColor=white)
 
-- **Frontend:**  
-  `![Next.js](https://img.shields.io/badge/-Next.js-000000?logo=next.js&logoColor=white)`  
-  `![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)`  
-  `![CSS3](https://img.shields.io/badge/-CSS3-1572B6?logo=css3&logoColor=white)`
+**Backend:**  
+![Firebase](https://img.shields.io/badge/-Firebase-FFCA28?logo=firebase&logoColor=black)  
 
-- **Backend:**  
-  `![Firebase](https://img.shields.io/badge/-Firebase-FFCA28?logo=firebase&logoColor=black)`
-
-- **API Testing:**  
-  `![Postman](https://img.shields.io/badge/-Postman-FF6C37?logo=postman&logoColor=white)`  
-  `![REST API](https://img.shields.io/badge/-REST%20API-25A162?logo=api&logoColor=white)`
-
+**API Testing:**  
+![Postman](https://img.shields.io/badge/-Postman-FF6C37?logo=postman&logoColor=white)  
+![REST API](https://img.shields.io/badge/-REST%20API-25A162?logo=api&logoColor=white)
 
 ---
+
 
 ## 🚀 Getting Started
 
@@ -69,6 +67,7 @@ Currently working on profile features like image upload, user authentication, an
 
 Backend will support Firebase or Supabase integration.
 
-🙌 Author
-Developed by 
+
+### 🙌 Author  
+Developed by  
 [![GitHub](https://img.shields.io/badge/-@Lincoln--Madaraka-181717?logo=github)](https://github.com/Lincoln-Madaraka)
