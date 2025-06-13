@@ -4,7 +4,6 @@ A platform that connects blood donors with recipients, streamlining the process 
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![GitHub](https://img.shields.io/badge/-@Lincoln--Madaraka-181717?logo=github)](https://github.com/Lincoln-Madaraka)
-[![GitHub last commit](https://img.shields.io/github/last-commit/Lincoln-Madaraka/bloodafya)](https://github.com/Lincoln-Madaraka/bloodafya.git)
 
 ---
 
@@ -69,4 +68,4 @@ Backend will support Firebase or Supabase integration.
 
 
 ### 🙌 Author  
-Developed by 
+Developed by Lincoln 
