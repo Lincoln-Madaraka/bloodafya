@@ -1,4 +1,4 @@
-# 🩸⚕️🏥 BloodAfya
+# 🩸⚕️BloodAfya
 
 A platform that connects blood donors with recipients, streamlining the process of locating and managing donation opportunities.
 
