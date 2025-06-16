@@ -40,16 +40,16 @@ export async function POST(request: Request) {
     // Save user
     const newUser = await prisma.user.create({
       data: {
-        full_name: fullName,
+        fullName: fullName,
         email,
         phone,
         password, // In real use, hash with bcrypt
         dob: new Date(dob),
         gender,
         location,
-        blood_type: bloodType,
-        is_donor: isDonor === 'Yes',
-        medical_conditions: medicalConditions || '',
+        bloodType: bloodType,
+        isDonor: isDonor === 'Yes',
+        medicalConditions: medicalConditions || '',
       },
     });
 
