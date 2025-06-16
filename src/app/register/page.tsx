@@ -30,6 +30,34 @@ export default function Register() {
     }
     return 'Weak';
   };
+  const handleSubmit = async () => {
+    if (!acceptedTerms) return;
+
+    const res = await fetch('/api/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        fullName,
+        email,
+        phone,
+        password,
+        dob,
+        gender,
+        location,
+        bloodType,
+        isDonor,
+        medicalConditions,
+      }),
+    });
+    const data = await res.json();
+    if (res.ok) {
+      alert('Registration successful');
+      router.push('/login');
+    } else {
+      alert(`Error: ${data.error}`);
+    }
+  };
+
 
   return (
     <div
