@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@/generated/prisma'; // path based on your prisma output
+import { PrismaClient } from '@prisma/client'; // path based on your prisma output
 const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
