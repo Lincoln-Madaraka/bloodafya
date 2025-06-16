@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                 Int      @id @default(autoincrement())
+  fullName           String
+  email              String   @unique
+  phone              String
+  password           String
+  dob                DateTime
+  gender             String?   // Optional
+  location           String
+  bloodType          String
+  isDonor            Boolean   @default(false)
+  medicalConditions  String?   // Optional
+  createdAt          DateTime  @default(now())
+
+  donations          Donation[]
+  requests           Request[]
+}
+
+model Donation {
+  id        Int      @id @default(autoincrement())
+  donorId   Int
+  user      User     @relation(fields: [donorId], references: [id])
+  date      DateTime
+  location  String
+}
+
+model Request {
+  id          Int      @id @default(autoincrement())
+  recipientId Int
+  user        User     @relation(fields: [recipientId], references: [id])
+  status      String   @default("pending")
+  requestedAt DateTime @default(now())
+}
