@@ -94,15 +94,15 @@ export default function Register() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col">
           <label htmlFor="fullName" className="text-white mb-1 text-sm">Full Name</label>
-            <input type="text" placeholder="Full Name" className="p-3 rounded bg-gray-100 text-black" />
+            <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)}placeholder="Full Name" className="p-3 rounded bg-gray-100 text-black" />
           </div>
           <div className="flex flex-col">
           <label htmlFor="email" className="text-white mb-1 text-sm">Email Address</label>
-            <input type="email" placeholder="Email Address" className="p-3 rounded bg-gray-100 text-black"  value={email} onChange={(e) => setEmail(e.target.value)}/>
+            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email Address" className="p-3 rounded bg-gray-100 text-black" />
           </div>
           <div className="flex flex-col">
           <label htmlFor="phone" className="text-white mb-1 text-sm">Phone Number</label>
-            <input type="tel" placeholder="Phone Number" className="p-3 rounded bg-gray-100 text-black" />
+            <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Phone Number" className="p-3 rounded bg-gray-100 text-black" />
             <p className="text-xs text-gray-400 mt-1">We'll send a verification code to this number.</p>
           </div>
            <div className="flex flex-col relative">
@@ -145,15 +145,15 @@ export default function Register() {
           </div>
           <div className="flex flex-col">
           <label htmlFor="dob" className="text-white mb-1 text-sm">Date of Birth</label>
-            <input type="date" placeholder="Date of Birth" className="p-3 rounded bg-gray-100 text-black" />
+            <input type="date" value={dob} onChange={(e) => setDob(e.target.value)} className="p-3 rounded bg-gray-100 text-black" />
           </div>
-            <select className="p-3 rounded bg-gray-100 text-black">
+            <select className="p-3 rounded bg-gray-100 text-black" value={gender} onChange={(e) => setGender(e.target.value)}>
               <option value="">Gender (Optional)</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Other">Other</option>
             </select>
-            <input type="text" placeholder="Location (City/Town)" className="p-3 rounded bg-gray-100 text-black" />
+            <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} placeholder="Location (City/Town)" className="p-3 rounded bg-gray-100 text-black" />
           </div>
 
           <div className="text-sm">
@@ -165,7 +165,7 @@ export default function Register() {
 
           {/* Optional Medical Info */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-            <select className="p-3 rounded bg-gray-100 text-black">
+            <select value={bloodType} onChange={(e) => setBloodType(e.target.value)} className="p-3 rounded bg-gray-100 text-black">
               <option value="">Blood Type</option>
               <option value="A+">A+</option>
               <option value="A-">A-</option>
@@ -176,12 +176,12 @@ export default function Register() {
               <option value="AB+">AB+</option>
               <option value="AB-">AB-</option>
             </select>
-            <select className="p-3 rounded bg-gray-100 text-black">
+            <select value={isDonor} onChange={(e) => setIsDonor(e.target.value)} className="p-3 rounded bg-gray-100 text-black">
               <option value="">Are you a donor?</option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </select>
-            <input type="text" placeholder="Existing medical conditions (Optional)" className="p-3 rounded bg-gray-100 text-black md:col-span-2" />
+            <input type="text" value={medicalConditions} onChange={(e) => setMedicalConditions(e.target.value)} placeholder="Existing medical conditions (Optional)" className="p-3 rounded bg-gray-100 text-black md:col-span-2" />
           </div>
 
           {/* Terms and Create Account */}
@@ -198,6 +198,7 @@ export default function Register() {
             </label>
 
             <button
+              onClick={handleSubmit}
               disabled={!acceptedTerms}
               className={`w-full py-3 rounded ${acceptedTerms ? 'bg-red-700 hover:bg-red-800' : 'bg-gray-600 cursor-not-allowed'} text-white font-semibold`}
             
