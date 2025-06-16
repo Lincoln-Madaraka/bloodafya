@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 import { FaArrowLeft, FaTwitter, FaInstagram, FaGlobe, FaEnvelope, FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useRouter } from 'next/navigation';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
 export default function Register() {
   const [email, setEmail] = useState('');
 
