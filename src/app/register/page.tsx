@@ -7,11 +7,20 @@ export default function Register() {
   const [email, setEmail] = useState('');
 
   const router = useRouter();
+  const [fullName, setFullName] = useState('');
+  const [phone, setPhone] = useState('');
+  const [dob, setDob] = useState('');
+  const [gender, setGender] = useState('');
+  const [location, setLocation] = useState('');
+  const [bloodType, setBloodType] = useState('');
+  const [isDonor, setIsDonor] = useState('');
+  const [medicalConditions, setMedicalConditions] = useState('');
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
+  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [acceptedTerms, setAcceptedTerms] = useState(false);
+
 
   const getPasswordStrength = () => {
     if (password.length > 8 && /[A-Z]/.test(password) && /\d/.test(password)) {
