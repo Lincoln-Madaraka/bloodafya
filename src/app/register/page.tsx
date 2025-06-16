@@ -68,7 +68,8 @@ export default function Register() {
             <input type="tel" placeholder="Phone Number" className="p-3 rounded bg-gray-100 text-black" />
             <p className="text-xs text-gray-400 mt-1">We'll send a verification code to this number.</p>
           </div>
-            
+           <div className="flex flex-col relative">
+            <label htmlFor="password" className="text-white mb-1 text-sm">Password</label> 
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
@@ -85,7 +86,9 @@ export default function Register() {
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
-
+          </div>
+          <div className="flex flex-col relative">
+          <label htmlFor="confirmPassword" className="text-white mb-1 text-sm">Confirm Password</label>
             <div className="relative">
               <input
                 type={showConfirmPassword ? 'text' : 'password'}
@@ -102,8 +105,11 @@ export default function Register() {
                 {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
               </button>
             </div>
-
+          </div>
+          <div className="flex flex-col">
+          <label htmlFor="dob" className="text-white mb-1 text-sm">Date of Birth</label>
             <input type="date" placeholder="Date of Birth" className="p-3 rounded bg-gray-100 text-black" />
+          </div>
             <select className="p-3 rounded bg-gray-100 text-black">
               <option value="">Gender (Optional)</option>
               <option value="Male">Male</option>
