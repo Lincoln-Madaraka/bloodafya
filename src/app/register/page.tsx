@@ -55,9 +55,19 @@ export default function Register() {
           <h2 className="text-3xl font-bold mb-2 text-red-500 text-center">Create Your Account</h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col">
+          <label htmlFor="fullName" className="text-white mb-1 text-sm">Full Name</label>
             <input type="text" placeholder="Full Name" className="p-3 rounded bg-gray-100 text-black" />
+          </div>
+          <div className="flex flex-col">
+          <label htmlFor="email" className="text-white mb-1 text-sm">Email Address</label>
             <input type="email" placeholder="Email Address" className="p-3 rounded bg-gray-100 text-black"  value={email} onChange={(e) => setEmail(e.target.value)}/>
+          </div>
+          <div className="flex flex-col">
+          <label htmlFor="phone" className="text-white mb-1 text-sm">Phone Number</label>
             <input type="tel" placeholder="Phone Number" className="p-3 rounded bg-gray-100 text-black" />
+            <p className="text-xs text-gray-400 mt-1">We'll send a verification code to this number.</p>
+          </div>
             
             <div className="relative">
               <input
