@@ -30,6 +30,39 @@ export default function Register() {
     }
     return 'Weak';
   };
+  const handleRegister = async () => {
+  if (password !== confirmPassword) {
+    alert("Passwords do not match.");
+    return;
+  }
+
+  const res = await fetch("/api/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      fullName: fullName,  // make sure you're tracking this in useState
+      email,
+      password,
+      phone,
+      dob,
+      gender,
+      location,
+      bloodType,
+      isDonor,
+      medicalConditions,
+    }),
+  });
+
+  const data = await res.json();
+  if (res.ok) {
+    alert("Registration successful!");
+    router.push("/login");
+  } else {
+    alert(`Error: ${data.message || "Something went wrong."}`);
+  }
+};
   const handleSubmit = async () => {
     if (!acceptedTerms) return;
 
@@ -198,7 +231,7 @@ export default function Register() {
             </label>
 
             <button
-              onClick={handleSubmit}
+              onClick={handleRegister}
               disabled={!acceptedTerms}
               className={`w-full py-3 rounded ${acceptedTerms ? 'bg-red-700 hover:bg-red-800' : 'bg-gray-600 cursor-not-allowed'} text-white font-semibold`}
             
