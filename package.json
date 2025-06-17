@@ -1,33 +1,33 @@
 {
     "name": "bloodafya",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "postinstall": "prisma generate"
-  },
-  "dependencies": {
-    "@prisma/client": "^6.9.0",
-    "firebase": "^11.9.1",
-    "framer-motion": "^12.16.0",
-    "next": "15.3.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-icons": "^5.5.0"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3.0.0",
-    "@tailwindcss/postcss": "^4.0.0",
-    "@types/node": "^20.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "eslint": "^9.0.0",
-    "eslint-config-next": "15.3.3",
-    "prisma": "^6.8.2",
-    "tailwindcss": "^4.0.0",
-    "typescript": "^5.0.0"
-  }
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "postinstall": "prisma generate"
+    },
+    "dependencies": {
+        "@prisma/client": "^6.9.0",
+        "firebase": "^11.9.1",
+        "framer-motion": "^12.16.0",
+        "next": "15.3.3",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
+        "react-icons": "^5.5.0"
+    },
+    "devDependencies": {
+        "@eslint/eslintrc": "^3.0.0",
+        "@tailwindcss/postcss": "^4.0.0",
+        "@types/node": "^20.0.0",
+        "@types/react": "^19.0.0",
+        "@types/react-dom": "^19.0.0",
+        "eslint": "^9.0.0",
+        "eslint-config-next": "15.3.3",
+        "prisma": "^6.9.0",
+        "tailwindcss": "^4.0.0",
+        "typescript": "^5.0.0"
+    }
 }

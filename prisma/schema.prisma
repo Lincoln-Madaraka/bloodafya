@@ -1,44 +1,15 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
 generator client {
   provider = "prisma-client-js"
-  url = env("DATABASE_URL")
+  output   = "../src/generated/prisma"
 }
 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL)
-}
-
-model User {
-  id                 Int      @id @default(autoincrement())
-  fullName           String
-  email              String   @unique
-  phone              String
-  password           String
-  dob                DateTime
-  gender             String?   // Optional
-  location           String
-  bloodType          String
-  isDonor            Boolean   @default(false)
-  medicalConditions  String?   // Optional
-  createdAt          DateTime  @default(now())
-
-  donations          Donation[]
-  requests           Request[]
-}
-
-model Donation {
-  id        Int      @id @default(autoincrement())
-  donorId   Int
-  user      User     @relation(fields: [donorId], references: [id])
-  date      DateTime
-  location  String
-}
-
-model Request {
-  id          Int      @id @default(autoincrement())
-  recipientId Int
-  user        User     @relation(fields: [recipientId], references: [id])
-  status      String   @default("pending")
-  requestedAt DateTime @default(now())
 }
