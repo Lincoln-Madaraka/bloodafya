@@ -1,96 +1,118 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { FaArrowLeft, FaTwitter, FaInstagram, FaGlobe, FaEnvelope, FaEye, FaEyeSlash } from 'react-icons/fa';
-import { useRouter } from 'next/navigation';
+import React, { useState } from "react";
+import {
+  FaArrowLeft,
+  FaTwitter,
+  FaInstagram,
+  FaGlobe,
+  FaEnvelope,
+  FaEye,
+  FaEyeSlash,
+} from "react-icons/fa";
+import { useRouter } from "next/navigation";
+import { supabase } from "@/lib/supabaseClient"; // make sure you have this file and export supabase client
+
 export default function Register() {
-  const [email, setEmail] = useState('');
-
   const router = useRouter();
-  const [fullName, setFullName] = useState('');
-  const [phone, setPhone] = useState('');
-  const [dob, setDob] = useState('');
-  const [gender, setGender] = useState('');
-  const [location, setLocation] = useState('');
-  const [bloodType, setBloodType] = useState('');
-  const [isDonor, setIsDonor] = useState('');
-  const [medicalConditions, setMedicalConditions] = useState('');
+
+  const [email, setEmail] = useState("");
+  const [fullName, setFullName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [dob, setDob] = useState("");
+  const [gender, setGender] = useState("");
+  const [location, setLocation] = useState("");
+  const [bloodType, setBloodType] = useState("");
+  const [isDonor, setIsDonor] = useState("");
+  const [medicalConditions, setMedicalConditions] = useState("");
   const [acceptedTerms, setAcceptedTerms] = useState(false);
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [confirmPassword, setConfirmPassword] = useState('');
-
+  const [loading, setLoading] = useState(false);
 
   const getPasswordStrength = () => {
     if (password.length > 8 && /[A-Z]/.test(password) && /\d/.test(password)) {
-      return 'Strong';
+      return "Strong";
     } else if (password.length >= 6) {
-      return 'Medium';
+      return "Medium";
     }
-    return 'Weak';
+    return "Weak";
   };
+
   const handleRegister = async () => {
-  if (password !== confirmPassword) {
-    alert("Passwords do not match.");
-    return;
-  }
+    if (!acceptedTerms) {
+      alert("You must accept terms and conditions.");
+      return;
+    }
 
-  const res = await fetch("/api/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      fullName: fullName,  // make sure you're tracking this in useState
-      email,
-      password,
-      phone,
-      dob,
-      gender,
-      location,
-      bloodType,
-      isDonor,
-      medicalConditions,
-    }),
-  });
+    if (password !== confirmPassword) {
+      alert("Passwords do not match.");
+      return;
+    }
 
-  const data = await res.json();
-  if (res.ok) {
-    alert("Registration successful!");
-    router.push("/login");
-  } else {
-    alert(`Error: ${data.message || "Something went wrong."}`);
-  }
-};
-  const handleSubmit = async () => {
-    if (!acceptedTerms) return;
+    if (!fullName || !email || !password) {
+      alert("Please fill in all required fields.");
+      return;
+    }
 
-    const res = await fetch('/api/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        fullName,
-        email,
-        phone,
-        password,
-        dob,
-        gender,
-        location,
-        bloodType,
-        isDonor,
-        medicalConditions,
-      }),
-    });
-    const data = await res.json();
-    if (res.ok) {
-      alert('Registration successful');
-      router.push('/login');
-    } else {
-      alert(`Error: ${data.error}`);
+    setLoading(true);
+
+    try {
+      // Step 1: Sign up with Supabase Auth
+      const { data: signUpData, error: signUpError } =
+        await supabase.auth.signUp({
+          email,
+          password,
+        });
+
+      if (signUpError) {
+        alert(`Signup failed: ${signUpError.message}`);
+        setLoading(false);
+        return;
+      }
+
+      const userId = signUpData.user?.id;
+      if (!userId) {
+        alert("Failed to retrieve user ID after signup.");
+        setLoading(false);
+        return;
+      }
+
+      // Step 2: Insert user profile into 'users' table
+      const { error: insertError } = await supabase.from("users").insert([
+        {
+          id: userId,
+          fullname: fullName,
+          email,
+          phone,
+          dob: dob || null,
+          gender,
+          location,
+          bloodtype: bloodType,
+          isdonor: isDonor === "Yes",
+          medicalconditions: medicalConditions,
+        },
+      ]);
+
+      if (insertError) {
+        alert(`Failed to save profile info: ${insertError.message}`);
+        setLoading(false);
+        return;
+      }
+
+      alert(
+        "Registration successful! Please check your email to confirm your account."
+      );
+      router.push("/login");
+    } catch (error) {
+      alert("Unexpected error occurred during registration.");
+      console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
-
 
   return (
     <div
@@ -102,103 +124,186 @@ export default function Register() {
     >
       {/* Header */}
       <header className="flex justify-between items-center p-6 bg-black bg-opacity-50">
-        <a href='/'><div className="flex flex-col items-start">
-          <div className="flex items-center space-x-2">
-            <img src="/blood-afya-icon.png" alt="BloodAfya Logo" className="w-10 h-10" />
-            <h1 className="text-2xl font-bold">BloodAfya</h1>
+        <a href="/">
+          <div className="flex flex-col items-start">
+            <div className="flex items-center space-x-2">
+              <img
+                src="/blood-afya-icon.png"
+                alt="BloodAfya Logo"
+                className="w-10 h-10"
+              />
+              <h1 className="text-2xl font-bold">BloodAfya</h1>
+            </div>
+            <p className="text-sm italic text-white mt-1 ml-1">
+              Donate Blood, Save Lives
+            </p>
           </div>
-          <p className="text-sm italic text-white mt-1 ml-1">Donate Blood, Save Lives</p>
-        </div></a>
+        </a>
       </header>
 
       {/* Signup Form */}
       <main className="flex justify-center items-center flex-grow px-4">
         <div className="bg-black bg-opacity-60 p-8 rounded-xl max-w-2xl w-full space-y-6 shadow-lg">
           <button
-              onClick={() => router.back()}
-              className="text-gray-300 hover:text-red-500 mb-4 flex items-center space-x-2"
-            >
-              <FaArrowLeft />
-              <span>Back</span>
-            </button>
+            onClick={() => router.back()}
+            className="text-gray-300 hover:text-red-500 mb-4 flex items-center space-x-2"
+          >
+            <FaArrowLeft />
+            <span>Back</span>
+          </button>
 
-          <h2 className="text-3xl font-bold mb-2 text-red-500 text-center">Create Your Account</h2>
+          <h2 className="text-3xl font-bold mb-2 text-red-500 text-center">
+            Create Your Account
+          </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="flex flex-col">
-          <label htmlFor="fullName" className="text-white mb-1 text-sm">Full Name</label>
-            <input type="text" value={fullName} onChange={(e) => setFullName(e.target.value)}placeholder="Full Name" className="p-3 rounded bg-gray-100 text-black" />
-          </div>
-          <div className="flex flex-col">
-          <label htmlFor="email" className="text-white mb-1 text-sm">Email Address</label>
-            <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email Address" className="p-3 rounded bg-gray-100 text-black" />
-          </div>
-          <div className="flex flex-col">
-          <label htmlFor="phone" className="text-white mb-1 text-sm">Phone Number</label>
-            <input type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Phone Number" className="p-3 rounded bg-gray-100 text-black" />
-            <p className="text-xs text-gray-400 mt-1">We'll send a verification code to this number.</p>
-          </div>
-           <div className="flex flex-col relative">
-            <label htmlFor="password" className="text-white mb-1 text-sm">Password</label> 
-            <div className="relative">
+            <div className="flex flex-col">
+              <label htmlFor="fullName" className="text-white mb-1 text-sm">
+                Full Name
+              </label>
               <input
-                type={showPassword ? 'text' : 'password'}
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="p-3 rounded bg-gray-100 text-black w-full"
+                type="text"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+                placeholder="Full Name"
+                className="p-3 rounded bg-gray-100 text-black"
+                required
               />
-              <button
-                type="button"
-                className="absolute right-3 top-3 text-gray-600"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? <FaEyeSlash /> : <FaEye />}
-              </button>
             </div>
-          </div>
-          <div className="flex flex-col relative">
-          <label htmlFor="confirmPassword" className="text-white mb-1 text-sm">Confirm Password</label>
-            <div className="relative">
+
+            <div className="flex flex-col">
+              <label htmlFor="email" className="text-white mb-1 text-sm">
+                Email Address
+              </label>
               <input
-                type={showConfirmPassword ? 'text' : 'password'}
-                placeholder="Confirm Password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                className="p-3 rounded bg-gray-100 text-black w-full"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="Email Address"
+                className="p-3 rounded bg-gray-100 text-black"
+                required
               />
-              <button
-                type="button"
-                className="absolute right-3 top-3 text-gray-600"
-                onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-              >
-                {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
-              </button>
             </div>
-          </div>
-          <div className="flex flex-col">
-          <label htmlFor="dob" className="text-white mb-1 text-sm">Date of Birth</label>
-            <input type="date" value={dob} onChange={(e) => setDob(e.target.value)} className="p-3 rounded bg-gray-100 text-black" />
-          </div>
-            <select className="p-3 rounded bg-gray-100 text-black" value={gender} onChange={(e) => setGender(e.target.value)}>
+
+            <div className="flex flex-col">
+              <label htmlFor="phone" className="text-white mb-1 text-sm">
+                Phone Number
+              </label>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="Phone Number"
+                className="p-3 rounded bg-gray-100 text-black"
+              />
+              <p className="text-xs text-gray-400 mt-1">
+                We'll send a verification code to this number.
+              </p>
+            </div>
+
+            <div className="flex flex-col relative">
+              <label htmlFor="password" className="text-white mb-1 text-sm">
+                Password
+              </label>
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="p-3 rounded bg-gray-100 text-black w-full"
+                  required
+                />
+                <button
+                  type="button"
+                  className="absolute right-3 top-3 text-gray-600"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
+            </div>
+
+            <div className="flex flex-col relative">
+              <label
+                htmlFor="confirmPassword"
+                className="text-white mb-1 text-sm"
+              >
+                Confirm Password
+              </label>
+              <div className="relative">
+                <input
+                  type={showConfirmPassword ? "text" : "password"}
+                  placeholder="Confirm Password"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  className="p-3 rounded bg-gray-100 text-black w-full"
+                  required
+                />
+                <button
+                  type="button"
+                  className="absolute right-3 top-3 text-gray-600"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                >
+                  {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+                </button>
+              </div>
+            </div>
+
+            <div className="flex flex-col">
+              <label htmlFor="dob" className="text-white mb-1 text-sm">
+                Date of Birth
+              </label>
+              <input
+                type="date"
+                value={dob}
+                onChange={(e) => setDob(e.target.value)}
+                className="p-3 rounded bg-gray-100 text-black"
+              />
+            </div>
+
+            <select
+              className="p-3 rounded bg-gray-100 text-black"
+              value={gender}
+              onChange={(e) => setGender(e.target.value)}
+            >
               <option value="">Gender (Optional)</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Other">Other</option>
             </select>
-            <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} placeholder="Location (City/Town)" className="p-3 rounded bg-gray-100 text-black" />
+
+            <input
+              type="text"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+              placeholder="Location (City/Town)"
+              className="p-3 rounded bg-gray-100 text-black"
+            />
           </div>
 
           <div className="text-sm">
             <span className="text-gray-300">Password Strength: </span>
-            <span className={`font-bold ${getPasswordStrength() === 'Strong' ? 'text-green-500' : getPasswordStrength() === 'Medium' ? 'text-yellow-500' : 'text-red-500'}`}>
+            <span
+              className={`font-bold ${
+                getPasswordStrength() === "Strong"
+                  ? "text-green-500"
+                  : getPasswordStrength() === "Medium"
+                  ? "text-yellow-500"
+                  : "text-red-500"
+              }`}
+            >
               {getPasswordStrength()}
             </span>
           </div>
 
           {/* Optional Medical Info */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-            <select value={bloodType} onChange={(e) => setBloodType(e.target.value)} className="p-3 rounded bg-gray-100 text-black">
+            <select
+              value={bloodType}
+              onChange={(e) => setBloodType(e.target.value)}
+              className="p-3 rounded bg-gray-100 text-black"
+            >
               <option value="">Blood Type</option>
               <option value="A+">A+</option>
               <option value="A-">A-</option>
@@ -209,12 +314,24 @@ export default function Register() {
               <option value="AB+">AB+</option>
               <option value="AB-">AB-</option>
             </select>
-            <select value={isDonor} onChange={(e) => setIsDonor(e.target.value)} className="p-3 rounded bg-gray-100 text-black">
+
+            <select
+              value={isDonor}
+              onChange={(e) => setIsDonor(e.target.value)}
+              className="p-3 rounded bg-gray-100 text-black"
+            >
               <option value="">Are you a donor?</option>
               <option value="Yes">Yes</option>
               <option value="No">No</option>
             </select>
-            <input type="text" value={medicalConditions} onChange={(e) => setMedicalConditions(e.target.value)} placeholder="Existing medical conditions (Optional)" className="p-3 rounded bg-gray-100 text-black md:col-span-2" />
+
+            <input
+              type="text"
+              value={medicalConditions}
+              onChange={(e) => setMedicalConditions(e.target.value)}
+              placeholder="Existing medical conditions (Optional)"
+              className="p-3 rounded bg-gray-100 text-black md:col-span-2"
+            />
           </div>
 
           {/* Terms and Create Account */}
@@ -226,17 +343,27 @@ export default function Register() {
                 onChange={() => setAcceptedTerms(!acceptedTerms)}
               />
               <span>
-                I agree to the <a href="#" className="text-red-400 underline">Terms & Conditions</a> and <a href="#" className="text-red-400 underline">Privacy Policy</a>
+                I agree to the{" "}
+                <a href="#" className="text-red-400 underline">
+                  Terms & Conditions
+                </a>{" "}
+                and{" "}
+                <a href="#" className="text-red-400 underline">
+                  Privacy Policy
+                </a>
               </span>
             </label>
 
             <button
               onClick={handleRegister}
-              disabled={!acceptedTerms}
-              className={`w-full py-3 rounded ${acceptedTerms ? 'bg-red-700 hover:bg-red-800' : 'bg-gray-600 cursor-not-allowed'} text-white font-semibold`}
-            
+              disabled={!acceptedTerms || loading}
+              className={`w-full py-3 rounded ${
+                acceptedTerms
+                  ? "bg-red-700 hover:bg-red-800"
+                  : "bg-gray-600 cursor-not-allowed"
+              } text-white font-semibold`}
             >
-              Create Account
+              {loading ? "Registering..." : "Create Account"}
             </button>
 
             <button className="w-full py-3 rounded bg-white text-black font-semibold hover:bg-gray-200">
@@ -244,7 +371,7 @@ export default function Register() {
             </button>
 
             <p className="text-sm text-center">
-              Already have an account?{' '}
+              Already have an account?{" "}
               <a href="/login" className="text-red-400 underline">
                 Sign In
               </a>
@@ -256,23 +383,42 @@ export default function Register() {
       {/* Footer */}
       <footer className="bg-black bg-opacity-60 text-gray-300 text-center py-4">
         <div className="flex justify-center items-center space-x-4 text-sm">
-          <a href="mailto:madarakalincoln46@gmail.com" className="hover:text-red-500">
+          <a
+            href="mailto:madarakalincoln46@gmail.com"
+            className="hover:text-red-500"
+          >
             <FaEnvelope />
           </a>
-          <a href="https://twitter.com/syntaxrtx" target="_blank" rel="noopener noreferrer" className="hover:text-red-500">
+          <a
+            href="https://twitter.com/syntaxrtx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-red-500"
+          >
             <FaTwitter />
           </a>
-          <a href="https://instagram.com/kcl_fy" target="_blank" rel="noopener noreferrer" className="hover:text-red-500">
+          <a
+            href="https://instagram.com/kcl_fy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-red-500"
+          >
             <FaInstagram />
           </a>
-          <a href="https://lincoln-madaraka-portfolio.vercel.app/" target="_blank" rel="noopener noreferrer" className="hover:text-red-500">
+          <a
+            href="https://lincoln-madaraka-portfolio.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-red-500"
+          >
             <FaGlobe />
           </a>
           <span className="text-gray-400 text-lg">•</span>
-          <p className="ml-4">&copy; {new Date().getFullYear()} BloodAfya. All rights reserved.</p>
+          <p className="ml-4">
+            &copy; {new Date().getFullYear()} BloodAfya. All rights reserved.
+          </p>
         </div>
       </footer>
     </div>
   );
 }
-
