@@ -6,11 +6,9 @@
         "dev": "next dev",
         "build": "next build",
         "start": "next start",
-        "lint": "next lint",
-        "postinstall": "prisma generate"
+        "lint": "next lint"
     },
     "dependencies": {
-        "@prisma/client": "^6.9.0",
         "@supabase/supabase-js": "^2.50.0",
         "bcryptjs": "^3.0.2",
         "firebase": "^11.9.1",
@@ -28,7 +26,6 @@
         "@types/react-dom": "^19.0.0",
         "eslint": "^9.0.0",
         "eslint-config-next": "15.3.3",
-        "prisma": "^6.9.0",
         "tailwindcss": "^4.0.0",
         "typescript": "^5.0.0"
     }
